@@ -7,18 +7,26 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomePage: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("HashiRunApp")
+        VStack{
+            RoundedRectangle(cornerRadius: 20)
+                .frame(width:300,height: 400)
+                .foregroundColor(.clear)
+                .background(
+                    Image("bg")
+                        .resizable()
+                        .scaledToFit()
+                )
+            Button(action: {
+                print("See mission 01")
+            }, label: {
+                Text("Mission 01")
+            })
         }
-        .padding()
     }
 }
 
 #Preview {
-    ContentView()
+    HomePage()
 }

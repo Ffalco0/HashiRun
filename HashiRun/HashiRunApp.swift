@@ -11,7 +11,7 @@ import SwiftUI
 struct HashiRunApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomePage()
         }
     }
 }
