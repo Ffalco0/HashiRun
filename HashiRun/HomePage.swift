@@ -12,7 +12,7 @@ struct HomePage: View {
         NavigationStack{
             VStack{
                 //tryng pull content frorm git
-                NavigationLink(destination: Character()) {
+                NavigationLink(destination: CharacterView()) {
                     RoundedRectangle(cornerRadius: 20)
                         .frame(width:300,height: 400)
                         .foregroundColor(.clear)
