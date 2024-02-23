@@ -22,6 +22,8 @@ struct HomePage: View {
                                 .scaledToFit()
                     )
                 }
+                
+                Spacer()
                 Button(action: {
                     print("See mission 01")
                 }, label: {

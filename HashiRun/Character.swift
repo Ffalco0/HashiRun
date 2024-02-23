@@ -34,9 +34,9 @@ struct SkillTable: View {
                 ForEach(skills, id: \.self) { skill in
                     HStack {
                         Text(skill)
-                            .font(.title2)
+                            .font(.custom("Press Start", size: 15))
                         Text("0")
-                            .font(.title2)
+                            .font(.custom("Press Start", size: 15))
                     }
                 }
             }
