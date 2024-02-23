@@ -8,17 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		74D555672B88D35C00EEA266 /* HashiRunApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555662B88D35C00EEA266 /* HashiRunApp.swift */; };
-		74D555692B88D35C00EEA266 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555682B88D35C00EEA266 /* ContentView.swift */; };
+		74D555692B88D35C00EEA266 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555682B88D35C00EEA266 /* HomePage.swift */; };
 		74D5556B2B88D35D00EEA266 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74D5556A2B88D35D00EEA266 /* Assets.xcassets */; };
 		74D5556E2B88D35D00EEA266 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74D5556D2B88D35D00EEA266 /* Preview Assets.xcassets */; };
+		74D555752B88F1C700EEA266 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555742B88F1C700EEA266 /* Character.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		74D555632B88D35C00EEA266 /* HashiRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HashiRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74D555662B88D35C00EEA266 /* HashiRunApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashiRunApp.swift; sourceTree = "<group>"; };
-		74D555682B88D35C00EEA266 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		74D555682B88D35C00EEA266 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		74D5556A2B88D35D00EEA266 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74D5556D2B88D35D00EEA266 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		74D555742B88F1C700EEA266 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +54,8 @@
 			isa = PBXGroup;
 			children = (
 				74D555662B88D35C00EEA266 /* HashiRunApp.swift */,
-				74D555682B88D35C00EEA266 /* ContentView.swift */,
+				74D555682B88D35C00EEA266 /* HomePage.swift */,
+				74D555742B88F1C700EEA266 /* Character.swift */,
 				74D5556A2B88D35D00EEA266 /* Assets.xcassets */,
 				74D5556C2B88D35D00EEA266 /* Preview Content */,
 			);
@@ -137,7 +140,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74D555692B88D35C00EEA266 /* ContentView.swift in Sources */,
+				74D555752B88F1C700EEA266 /* Character.swift in Sources */,
+				74D555692B88D35C00EEA266 /* HomePage.swift in Sources */,
 				74D555672B88D35C00EEA266 /* HashiRunApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
