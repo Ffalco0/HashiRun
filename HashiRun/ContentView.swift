@@ -10,6 +10,7 @@ import SwiftUI
 struct HomePage: View {
     var body: some View {
         VStack{
+            //tryng pull content frorm git
             RoundedRectangle(cornerRadius: 20)
                 .frame(width:300,height: 400)
                 .foregroundColor(.clear)
@@ -18,6 +19,11 @@ struct HomePage: View {
                         .resizable()
                         .scaledToFit()
                 )
+            Button(action: {
+                print("See mission 01")
+            }, label: {
+                Text("Mission 01")
+            })
             Button(action: {
                 print("See mission 01")
             }, label: {
