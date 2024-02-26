@@ -24,7 +24,7 @@ struct HomePage: View {
         NavigationStack{
             ZStack{
                 
-                Color("background").edgesIgnoringSafeArea(.all)
+                LinearGradient(gradient: Gradient(colors: [Color("bg"),Color("bg2")]), startPoint: .topLeading, endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
                 
                 VStack{
                     VStack(alignment:.leading){
@@ -66,11 +66,12 @@ struct HomePage: View {
                                     .padding(.vertical, 15) // Vertical padding
                                     .padding(.horizontal, 30) // Horizontal padding
                                     .frame(width: 300, height: 80) // Set explicit frame size for the button
-                                    .background(isClicked[index] ? Color.blue.opacity(0.5) : Color.blue.opacity(1.0)) // Button background color
+                                    .background(isClicked[index] ? Color("button").opacity(0.5) : Color("button").opacity(1.0)) // Button background color
                                     .cornerRadius(20) // Rounded corners
                             }
                             .foregroundColor(.white) // Ensure the text color is white if needed
                             .disabled(isClicked[index]) // Disable the button if it has been clicked
+                            .shadow(color: .black, radius: 10, x: 0, y: 5) // Add shadow here
                         }.padding()
                         
                     }
