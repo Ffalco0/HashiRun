@@ -11,7 +11,8 @@ import SwiftUI
 struct HashiRunApp: App {
     var body: some Scene {
         WindowGroup {
-            HomePage()
+            let counter = Counter()
+            HomePage(progress: counter)
         }
     }
 }

@@ -14,6 +14,11 @@
 		74D555752B88F1C700EEA266 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555742B88F1C700EEA266 /* Character.swift */; };
 		74D555852B88F79A00EEA266 /* prstart.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74D555832B88F79A00EEA266 /* prstart.ttf */; };
 		74D555862B88F79A00EEA266 /* prstartk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74D555842B88F79A00EEA266 /* prstartk.ttf */; };
+		74D555882B88F9D900EEA266 /* QuestCardFull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555872B88F9D900EEA266 /* QuestCardFull.swift */; };
+		74D5558B2B8A748200EEA266 /* SharedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D5558A2B8A748200EEA266 /* SharedValue.swift */; };
+		74D555BD2B8C9BEF00EEA266 /* QuestText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555BC2B8C9BEF00EEA266 /* QuestText.swift */; };
+		74D555BF2B8CA09D00EEA266 /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555BE2B8CA09D00EEA266 /* CharacterModel.swift */; };
+		74D555C12B8CA2E900EEA266 /* CustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555C02B8CA2E900EEA266 /* CustomElements.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		74D555802B88F59100EEA266 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		74D555832B88F79A00EEA266 /* prstart.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = prstart.ttf; path = "../../../Downloads/press-start-2/prstart.ttf"; sourceTree = "<group>"; };
 		74D555842B88F79A00EEA266 /* prstartk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = prstartk.ttf; path = "../../../Downloads/press-start-2/prstartk.ttf"; sourceTree = "<group>"; };
+		74D555872B88F9D900EEA266 /* QuestCardFull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestCardFull.swift; sourceTree = "<group>"; };
+		74D5558A2B8A748200EEA266 /* SharedValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedValue.swift; sourceTree = "<group>"; };
+		74D555BC2B8C9BEF00EEA266 /* QuestText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestText.swift; sourceTree = "<group>"; };
+		74D555BE2B8CA09D00EEA266 /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
+		74D555C02B8CA2E900EEA266 /* CustomElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomElements.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,9 +71,14 @@
 				74D555802B88F59100EEA266 /* Info.plist */,
 				74D555662B88D35C00EEA266 /* HashiRunApp.swift */,
 				74D555682B88D35C00EEA266 /* HomePage.swift */,
+				74D555C02B8CA2E900EEA266 /* CustomElements.swift */,
 				74D555832B88F79A00EEA266 /* prstart.ttf */,
 				74D555842B88F79A00EEA266 /* prstartk.ttf */,
 				74D555742B88F1C700EEA266 /* Character.swift */,
+				74D555872B88F9D900EEA266 /* QuestCardFull.swift */,
+				74D5558A2B8A748200EEA266 /* SharedValue.swift */,
+				74D555BE2B8CA09D00EEA266 /* CharacterModel.swift */,
+				74D555BC2B8C9BEF00EEA266 /* QuestText.swift */,
 				74D5556A2B88D35D00EEA266 /* Assets.xcassets */,
 				74D5556C2B88D35D00EEA266 /* Preview Content */,
 			);
@@ -151,8 +166,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				74D555752B88F1C700EEA266 /* Character.swift in Sources */,
+				74D555BD2B8C9BEF00EEA266 /* QuestText.swift in Sources */,
+				74D5558B2B8A748200EEA266 /* SharedValue.swift in Sources */,
+				74D555882B88F9D900EEA266 /* QuestCardFull.swift in Sources */,
 				74D555692B88D35C00EEA266 /* HomePage.swift in Sources */,
+				74D555BF2B8CA09D00EEA266 /* CharacterModel.swift in Sources */,
 				74D555672B88D35C00EEA266 /* HashiRunApp.swift in Sources */,
+				74D555C12B8CA2E900EEA266 /* CustomElements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
