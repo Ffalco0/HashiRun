@@ -10,13 +10,6 @@ import SwiftUI
 
 struct CharacterView: View {
     @ObservedObject var progress: Counter
-    /*
-     @State private var level = 1
-     @State private var skillPoint = 0
-     
-     private var skills: [String] = ["Strenght","Dex","Wisdom"]
-     @State private var skillValue: [CGFloat]
-     */
     init(progress: Counter) {
         self._progress = ObservedObject(initialValue: progress)
     }
@@ -110,12 +103,8 @@ struct CharacterView: View {
                             }
                         }
                     }
-                    
                 }
             }
-            
-            
-            
         }
     }
 }
