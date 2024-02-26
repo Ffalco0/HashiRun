@@ -8,174 +8,115 @@
 import SwiftUI
 
 
-struct CollectiblesView: View {
-    let images: [String] // Array of image names
-    
-    var body: some View {
-        ScrollView {
-            LazyVGrid(columns: Array(repeating: GridItem(), count: 3), spacing: 10) {
-                ForEach(images, id: \.self) { imageName in
-                    Image(imageName)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 80, height: 80) // Adjust the frame size as needed
-                }
-            }
-            .padding()
-        }
-    }
-}
-struct SkillTable: View {
-    var skills: [String]
-    
-    var body: some View {
-        ScrollView {
-            LazyVGrid(columns: Array(repeating: GridItem(), count: 1), spacing: 20) {
-                ForEach(skills, id: \.self) { skill in
-                    HStack {
-                        Text(skill)
-                            .font(.custom("Press Start", size: 15))
-                        Text("0")
-                            .font(.custom("Press Start", size: 15))
-                    }
-                }
-            }
-            .padding()
-        }
-    }
-}
-
-struct CustomProgressBar: View {
-    let progress: CGFloat
-    let imageName: String
-    
-    var body: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .leading) {
-                
-                RoundedRectangle(cornerRadius: 20)
-                     .frame(width: geometry.size.width, height: 20)
-                     .opacity(0.3)
-                     .foregroundColor(.gray)
-                
-               Rectangle()
-                    .frame(
-                        width: min(progress * geometry.size.width,
-                                   geometry.size.width),
-                        height: 20
-                    )
-                    .background(LinearGradient(gradient: Gradient(colors: [ Color("fill")
-                        .opacity(0.1),Color("fill").opacity(1.0)]), startPoint: .top, endPoint: .bottom)
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
-                    )
-                    .foregroundColor(.clear)
-                
-            }
-        }
-    }
-}
-
-
 struct CharacterView: View {
-    @State private var progressValue: Double = 0 // Initial progress value
-    @State private var level = 1
-    @State private var skillPoint = 0
-    @State private var skillValue: [CGFloat] = [0,0,0]
+    @ObservedObject var progress: Counter
+    /*
+     @State private var level = 1
+     @State private var skillPoint = 0
+     
+     private var skills: [String] = ["Strenght","Dex","Wisdom"]
+     @State private var skillValue: [CGFloat]
+     */
+    init(progress: Counter) {
+        self._progress = ObservedObject(initialValue: progress)
+    }
     
-  
-    private var skills: [String] = ["Strenght","Dex","Wisdom"]
+    @EnvironmentObject var character: Character
     
     var body: some View {
         NavigationStack{
-            ScrollView {
-                VStack{
-                    //MARK: - Character section
-                    Section {
-                        Image("wizard")
-                            .resizable()
-                            .frame(width: 200.0, height: 250.0)
-                            .clipShape(.rect)
-                        
-                        
-                        
-                        //MARK: - Level section
-                        HStack (alignment: .center){
-                            Text("Lvl \(level)")
-                                .font(.title3)
-                                .fontWeight(.bold)
-                                .padding()
-                            
-                            //Start working on the progress bar
-                            CustomProgressBar(progress: progressValue, imageName: "back")
-                                .padding()
-                        }.padding()
-                        
-                        //Tester to check if the lvl increment when you complete the bar
-                        Button("Increase Progress") {
-                            
-                            if progressValue < 0.9{
-                                withAnimation(.linear(duration: 0.2)) {
-                                    //progressValue += 0.1 // Increase progress value
+            ZStack{
+                Color("background").edgesIgnoringSafeArea(.all)
+                ScrollView {
+                    VStack{
+                        //MARK: - Character section
+                        Section {
+                            Image("wizard")
+                                .resizable()
+                                .frame(width: 200.0, height: 250.0)
+                                .clipShape(.rect)
+                            //MARK: - Level section
+                            VStack{
+                                Text("Lvl \(character.level)")
+                                    .font(Font.custom("Press Start", size: 15))
+                                //Start working on the progress bar
+                                CustomProgressBar(progress: progress.progress, imageName: "back")
+                                    .padding()
+                            }.padding()
+                            Spacer()
+                            //MARK: - Statistic section
+                            VStack (alignment:.leading){
+                                HStack {
+                                    Text("SKILLS")
+                                        .font(Font.custom("Press Start", size: 20))
+                                        .padding(.horizontal)
+                                    Spacer()
+                                }
+                                HStack{
+                                    VStack{
+                                        ForEach(0..<character.skills.count, id: \.self){index in
+                                            Text(character.skills[index])
+                                                .font(Font.custom("Press Start", size: 15))
+                                                .padding()
+                                        }
+                                    }.padding()
+                                    
+                                    VStack{
+                                        ForEach(0..<character.skillValue.count, id: \.self){index in
+                                            Text("\(character.skillValue[index])")
+                                                .font(Font.custom("Press Start", size: 15))
+                                                .padding()
+                                        }
+                                    }.padding()
+                                    
+                                    VStack{
+                                        ForEach(0..<character.skillValue.count, id: \.self){index in
+                                            Button {
+                                                if character.skillPoint > 0{
+                                                    character.skillValue[index] += 1
+                                                    character.skillPoint -= 1
+                                                }
+                                            } label: {
+                                                Image(systemName: "plus")
+                                            }.padding()
+
+                                        }
+                                    }.padding()
                                     
                                 }
-                                
-                            }else{
-                                progressValue = 0
-                                level += 1
-                                skillPoint += 1
+                            }
+                            Divider()
+                                .frame(height: 20)
+                            Section{
+                                //MARK: - Collectibles section
+                                HStack {
+                                    Text("COLLECTIBLES")
+                                        .font(Font.custom("Press Start", size: 20))
+                                        .padding()
+                                        .fontWeight(.bold)
+                                    Spacer()
+                                }
+                                CollectiblesView(images: ["coll 1", "coll 2", "coll 3", "coll 4"])
                             }
                         }
-                        Spacer()
-                        //MARK: - Statistic section
-                        
-                        VStack {
+                    }
+                    .navigationTitle("The knight")
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
                             HStack {
-                                Text("Skill")
-                                    .font(Font.custom("prstart", size: 50))
-                                    .padding(.horizontal)
-                                Spacer()
-                                
-                                
+                                Text("\(character.skillPoint)")
+                                    .font(Font.custom("Press Start", size: 15))
+                                Image(systemName: "gear")
                             }
-                            SkillTable(skills: ["Strenght","Dextry","Wisdom"])
                         }
                     }
-                    Divider()
-                        .frame(height: 20)
-                    Section{
-                        //MARK: - Collectibles section
-                        HStack {
-                            Text("Collectibles")
-                                .font(.title)
-                                .padding()
-                                .fontWeight(.bold)
-                            Spacer()
-                        }
-                        
-                        CollectiblesView(images: ["image1", "image2", "image3", "image4"])
-                        Spacer()
-                    }
                     
-                    
-                }
-            }
-            .navigationTitle("The knight")
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    HStack {
-                        Text("\(skillPoint)")
-                        Image(systemName: "gear")
-                    }
                 }
             }
             
+            
+            
         }
-        
-        
-        
     }
 }
 
-#Preview {
-    CharacterView()
-}

@@ -6,3 +6,13 @@
 //
 
 import Foundation
+import Combine
+
+
+class Counter: ObservableObject {
+    @Published var progress: Double = 0.0 {
+        didSet {
+            print("Progress is now \(progress)")
+        }
+    }
+}
