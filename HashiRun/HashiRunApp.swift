@@ -14,5 +14,6 @@ struct HashiRunApp: App {
             let counter = Counter()
             HomePage(progress: counter)
         }
+        
     }
 }

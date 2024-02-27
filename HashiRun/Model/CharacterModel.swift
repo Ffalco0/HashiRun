@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 class Character: ObservableObject {
     @Published var level : Int
     @Published var skillPoint = 0

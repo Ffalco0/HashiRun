@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftData
 
 
 struct CharacterView: View {
@@ -22,7 +21,7 @@ struct CharacterView: View {
         self._progress = ObservedObject(initialValue: progress)
     }
     
-    @Query var character: Character
+    @EnvironmentObject var character: Character
     
     var body: some View {
         NavigationStack{
