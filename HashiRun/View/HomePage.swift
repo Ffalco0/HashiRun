@@ -24,6 +24,7 @@ struct HomePage: View {
         
         NavigationStack{
             ZStack{
+                
                 LinearGradient(gradient: Gradient(colors: [Color("bg"),Color("bg2"),Color("bg"),Color("bg2")]), startPoint: .topLeading, endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
                 ScrollView{
                     

@@ -14,39 +14,48 @@ struct Quest: Identifiable {
 }
 
 let quests: [Quest] = [
-    Quest(name: "Distance Explorer", imageName: "distance_explorer"),
-    Quest(name: "Urban Explorer", imageName: "urban_explorer"),
-    Quest(name: "Elevation", imageName: "elevation"),
-    Quest(name: "Summit Seeker", imageName: "summit_seeker"),
-    Quest(name: "Streak Runner", imageName: "streak_runner"),
-    Quest(name: "Daily Dynamo", imageName: "daily_dynamo"),
-    Quest(name: "Speed Demon", imageName: "speed_demon"),
-    Quest(name: "Velocity Victor", imageName: "velocity_victor"),
-    Quest(name: "Charity Run", imageName: "charity_run"),
-    Quest(name: "Compassionate Runner", imageName: "compassionate_runner"),
-    Quest(name: "Trail Blazer", imageName: "trail_blazer"),
-    Quest(name: "Nature Navigator", imageName: "nature_navigator")
+    Quest(name: "Distance Explorer", imageName: "coll 1"),
+    Quest(name: "Urban Explorer", imageName: "coll 2"),
+    Quest(name: "Elevation", imageName: "coll 2"),
+    Quest(name: "Summit Seeker", imageName: "coll 2"),
+    Quest(name: "Streak Runner", imageName: "coll 2"),
+    Quest(name: "Daily Dynamo", imageName:"coll 2"),
+    Quest(name: "Speed Demon", imageName: "coll 2"),
+    Quest(name: "Velocity Victor", imageName: "coll 2"),
+    Quest(name: "Charity Run", imageName: "coll 2"),
+    Quest(name: "Compassionate Runner", imageName: "coll 2"),
+    Quest(name: "Trail Blazer", imageName: "coll 2"),
+    Quest(name: "Nature Navigator", imageName: "coll 2")
 ]
 
 struct ContentView: View {
     var body: some View {
-        ZStack {
-            Color("bg")
-                .ignoresSafeArea(edges: .all)
-            
-            NavigationView {
-                List(quests) { quest in
+        
+        NavigationView {
+            VStack(alignment: .leading, spacing: 50) {
+                ForEach(quests) { quest in
                     NavigationLink(destination: QuestDetailView(quest: quest)) {
                         HStack {
                             Image(quest.imageName)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 50, height: 50)
+                                .background(
+                                    Circle()
+                                        .foregroundColor(.gray)
+                                        .opacity(0.8)
+                                        .frame(width: 60, height: 60)
+                                )
                             Text(quest.name)
+                                .font(.title)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 9, style: .continuous)
+                                        .foregroundStyle(.gray)
+                                        .opacity(0.8)
+                                )
                         }
                     }
                 }
-                .navigationTitle("Quests")
             }
         }
     }
