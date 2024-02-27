@@ -21,44 +21,46 @@ struct HomePage: View {
     @StateObject var character = Character()
     
     var body: some View {
+        
         NavigationStack{
             ZStack{
-                
-                LinearGradient(gradient: Gradient(colors: [Color("bg"),Color("bg2")]), startPoint: .topLeading, endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
-                
-                VStack{
-                    VStack(alignment:.leading){
-                        NavigationLink(destination: CharacterView(progress: counter)) {
-                            RoundedRectangle(cornerRadius: 50)
-                                .frame(width:300,height: 400)
-                                .foregroundColor(.clear)
-                                .background(
-                                    Image("bg")
-                                        .resizable()
-                                        .scaledToFit()
-                                )
+                LinearGradient(gradient: Gradient(colors: [Color("bg"),Color("bg2"),Color("bg"),Color("bg2")]), startPoint: .topLeading, endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
+                ScrollView{
+                    
+                    VStack{
+                        VStack(alignment:.leading){
+                            NavigationLink(destination: CharacterView(progress: counter)) {
+                                RoundedRectangle(cornerRadius: 50)
+                                    .frame(width:300,height: 400)
+                                    .foregroundColor(.clear)
+                                    .background(
+                                        Image("bg")
+                                            .resizable()
+                                            .scaledToFit()
+                                    )
+                            }
                         }
-                    }
-                    
-                    CustomDivider(textToDisplay: "Boss")
-                    
-                    Button {
-                        print("Challenge the boss")
-                    } label: {
-                        Text("Challenge The Boss")
-                            .foregroundColor(.white) // Text color
-                            .padding(.vertical, 15) // Vertical padding
-                            .padding(.horizontal, 30) // Horizontal padding
-                            .frame(width: 300, height:80) // Set explicit frame size for the button
-                            .background(Color.red) // Button background color
-                            .cornerRadius(20) // Rounded corners
-                    }
-                    .foregroundColor(.white) // Ensure the text color is white if needed
-                    .padding()
-                    
-                    CustomDivider(textToDisplay: "Missions \(missionComplete)/\(missions.count)")
-                    
-                    ScrollView{
+                        
+                        CustomDivider(textToDisplay: "Boss")
+                        
+                        Button {
+                            print("Challenge the boss")
+                        } label: {
+                            Text("Challenge The Boss")
+                                .foregroundColor(.white) // Text color
+                                .padding(.vertical, 15) // Vertical padding
+                                .padding(.horizontal, 30) // Horizontal padding
+                                .frame(width: 300, height:80) // Set explicit frame size for the button
+                                .background(Color.red) // Button background color
+                                .cornerRadius(20) // Rounded corners
+                        }
+                        .foregroundColor(.white) // Ensure the text color is white if needed
+                        .shadow(color: .black, radius: 10, x: 0, y: 5) // Add shadow here
+                        .padding()
+                        
+                        CustomDivider(textToDisplay: "Missions \(missionComplete)/\(missions.count)")
+                        
+                        
                         ForEach(0..<missions.count, id: \.self){index in
                             NavigationLink(destination: QuestCardFull(isClicked: $isClicked[index],tempComplementation: $missionComplete, title: missions[index], progress: counter)) {
                                 Text(missions[index])
@@ -76,11 +78,11 @@ struct HomePage: View {
                         
                     }
                 }
-                
+
+                }.environmentObject(character)
             }
-        }.environmentObject(character)
+        }
     }
-}
 
 struct HomePage_Previews: PreviewProvider {
     static var previews: some View {

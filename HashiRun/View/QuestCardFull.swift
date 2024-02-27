@@ -23,8 +23,11 @@ struct QuestCardFull: View {
                 
                 VStack{
                     Text(title)
-                        .colorInvert()
+                        .padding()
+                        .font(.custom("Press Start", size: 20))
+                    
                     Spacer()
+                    
                     Button {
                         isClicked = true
                         tempComplementation += 1

@@ -11,12 +11,15 @@
 		74D555692B88D35C00EEA266 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555682B88D35C00EEA266 /* HomePage.swift */; };
 		74D5556B2B88D35D00EEA266 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74D5556A2B88D35D00EEA266 /* Assets.xcassets */; };
 		74D5556E2B88D35D00EEA266 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74D5556D2B88D35D00EEA266 /* Preview Assets.xcassets */; };
-		74D555752B88F1C700EEA266 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555742B88F1C700EEA266 /* Character.swift */; };
+		74D555752B88F1C700EEA266 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555742B88F1C700EEA266 /* CharacterView.swift */; };
 		74D555882B88F9D900EEA266 /* QuestCardFull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555872B88F9D900EEA266 /* QuestCardFull.swift */; };
 		74D5558B2B8A748200EEA266 /* SharedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D5558A2B8A748200EEA266 /* SharedValue.swift */; };
 		74D555BD2B8C9BEF00EEA266 /* QuestText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555BC2B8C9BEF00EEA266 /* QuestText.swift */; };
 		74D555BF2B8CA09D00EEA266 /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555BE2B8CA09D00EEA266 /* CharacterModel.swift */; };
 		74D555C12B8CA2E900EEA266 /* CustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555C02B8CA2E900EEA266 /* CustomElements.swift */; };
+		74D555CA2B8DEB9E00EEA266 /* prstart.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74D555C92B8DEAB300EEA266 /* prstart.ttf */; };
+		74D555CB2B8DEBA000EEA266 /* prstartk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74D555C82B8DEAB200EEA266 /* prstartk.ttf */; };
+		8B57B7262B8E2A09001B867D /* QuestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B57B7252B8E2A09001B867D /* QuestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,15 +28,17 @@
 		74D555682B88D35C00EEA266 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		74D5556A2B88D35D00EEA266 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74D5556D2B88D35D00EEA266 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		74D555742B88F1C700EEA266 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		74D555742B88F1C700EEA266 /* CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 		74D555802B88F59100EEA266 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		74D555872B88F9D900EEA266 /* QuestCardFull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestCardFull.swift; sourceTree = "<group>"; };
 		74D5558A2B8A748200EEA266 /* SharedValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedValue.swift; sourceTree = "<group>"; };
 		74D555BC2B8C9BEF00EEA266 /* QuestText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestText.swift; sourceTree = "<group>"; };
 		74D555BE2B8CA09D00EEA266 /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 		74D555C02B8CA2E900EEA266 /* CustomElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomElements.swift; sourceTree = "<group>"; };
-		8BD573BB2B8CD2B000AF9895 /* prstartk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = prstartk.ttf; path = "../../../Downloads/press-start/prstartk.ttf"; sourceTree = "<group>"; };
-		8BD573BC2B8CD2B000AF9895 /* prstart.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = prstart.ttf; path = "../../../Downloads/press-start/prstart.ttf"; sourceTree = "<group>"; };
+		74D555C22B8DE7B400EEA266 /* HashiRun.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HashiRun.entitlements; sourceTree = "<group>"; };
+		74D555C82B8DEAB200EEA266 /* prstartk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = prstartk.ttf; sourceTree = "<group>"; };
+		74D555C92B8DEAB300EEA266 /* prstart.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = prstart.ttf; sourceTree = "<group>"; };
+		8B57B7252B8E2A09001B867D /* QuestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuestView.swift; path = HashiRun/View/QuestView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,17 +71,12 @@
 		74D555652B88D35C00EEA266 /* HashiRun */ = {
 			isa = PBXGroup;
 			children = (
+				74D555C22B8DE7B400EEA266 /* HashiRun.entitlements */,
 				74D555802B88F59100EEA266 /* Info.plist */,
 				74D555662B88D35C00EEA266 /* HashiRunApp.swift */,
-				74D555682B88D35C00EEA266 /* HomePage.swift */,
-				74D555C02B8CA2E900EEA266 /* CustomElements.swift */,
-				74D555742B88F1C700EEA266 /* Character.swift */,
-				8BD573BC2B8CD2B000AF9895 /* prstart.ttf */,
-				8BD573BB2B8CD2B000AF9895 /* prstartk.ttf */,
-				74D555872B88F9D900EEA266 /* QuestCardFull.swift */,
-				74D5558A2B8A748200EEA266 /* SharedValue.swift */,
-				74D555BE2B8CA09D00EEA266 /* CharacterModel.swift */,
-				74D555BC2B8C9BEF00EEA266 /* QuestText.swift */,
+				74D555C62B8DEA6500EEA266 /* Model */,
+				74D555C52B8DEA0300EEA266 /* View */,
+				74D555C72B8DEA9600EEA266 /* Fonts */,
 				74D5556A2B88D35D00EEA266 /* Assets.xcassets */,
 				74D5556C2B88D35D00EEA266 /* Preview Content */,
 			);
@@ -89,6 +89,37 @@
 				74D5556D2B88D35D00EEA266 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		74D555C52B8DEA0300EEA266 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				74D555682B88D35C00EEA266 /* HomePage.swift */,
+				74D555742B88F1C700EEA266 /* CharacterView.swift */,
+				74D555872B88F9D900EEA266 /* QuestCardFull.swift */,
+				8B57B7252B8E2A09001B867D /* QuestView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		74D555C62B8DEA6500EEA266 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				74D555C02B8CA2E900EEA266 /* CustomElements.swift */,
+				74D5558A2B8A748200EEA266 /* SharedValue.swift */,
+				74D555BE2B8CA09D00EEA266 /* CharacterModel.swift */,
+				74D555BC2B8C9BEF00EEA266 /* QuestText.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		74D555C72B8DEA9600EEA266 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				74D555C92B8DEAB300EEA266 /* prstart.ttf */,
+				74D555C82B8DEAB200EEA266 /* prstartk.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,7 +181,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				74D5556E2B88D35D00EEA266 /* Preview Assets.xcassets in Resources */,
+				74D555CA2B8DEB9E00EEA266 /* prstart.ttf in Resources */,
 				74D5556B2B88D35D00EEA266 /* Assets.xcassets in Resources */,
+				74D555CB2B8DEBA000EEA266 /* prstartk.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,11 +194,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74D555752B88F1C700EEA266 /* Character.swift in Sources */,
+				74D555752B88F1C700EEA266 /* CharacterView.swift in Sources */,
 				74D555BD2B8C9BEF00EEA266 /* QuestText.swift in Sources */,
 				74D5558B2B8A748200EEA266 /* SharedValue.swift in Sources */,
 				74D555882B88F9D900EEA266 /* QuestCardFull.swift in Sources */,
 				74D555692B88D35C00EEA266 /* HomePage.swift in Sources */,
+				8B57B7262B8E2A09001B867D /* QuestView.swift in Sources */,
 				74D555BF2B8CA09D00EEA266 /* CharacterModel.swift in Sources */,
 				74D555672B88D35C00EEA266 /* HashiRunApp.swift in Sources */,
 				74D555C12B8CA2E900EEA266 /* CustomElements.swift in Sources */,
@@ -299,6 +333,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HashiRun/HashiRun.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
@@ -335,6 +370,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HashiRun/HashiRun.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
