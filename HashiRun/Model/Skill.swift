@@ -6,3 +6,12 @@
 //
 
 import Foundation
+import SwiftData
+
+@Model class Skill{
+    var skillValue: [Int]
+    
+    init(skillValue: [Int]) {
+        self.skillValue = skillValue
+    }
+}

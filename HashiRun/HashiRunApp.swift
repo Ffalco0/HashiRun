@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct HashiRunApp: App {
     var body: some Scene {
         WindowGroup {
-            let counter = Counter()
-            HomePage(progress: counter)
-        }
-        
+            HomePage()
+        }.modelContainer(for: Skill.self)
     }
 }
