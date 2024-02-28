@@ -99,7 +99,7 @@ struct CharacterView: View {
                                     .fontWeight(.bold)
                                 Spacer()
                             }
-                            CollectiblesView(images: ["coll 1", "coll 2", "coll 3", "coll 4"])
+                            CollectiblesView(images: ["bow","journal", "key", "potion","ring"])
                         }
                         
                     }
