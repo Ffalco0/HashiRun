@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+struct Tryanimation: View {
+    let animationImages = ["tuttologo1", "tuttologo2", "tuttologo3"] // Replace with your image names
+    let timer = Timer.publish(every: 1/5, on: .main, in: .common).autoconnect() // 30 FPS
+    @State var currentIndex = 0
+    
 struct HomePage: View {
     var missions: [String] = ["Explore the castle","Escape in the forest","Go to talk to the man in the seaport","Find the master sword"]
     @State var missionComplete:Int = 0
@@ -20,6 +25,8 @@ struct HomePage: View {
     
     @StateObject var character = Character()
     
+    let images = ["bg", "bg_1", "bg_2"]
+    
     var body: some View {
         NavigationStack{
             ZStack{
@@ -29,15 +36,19 @@ struct HomePage: View {
                     VStack{
                         VStack(alignment:.leading){
                             NavigationLink(destination: CharacterView(progress: counter)) {
-                                RoundedRectangle(cornerRadius: 50)
-                                    .frame(width:300,height: 400)
-                                    .foregroundColor(.clear)
-                                    .background(
-                                        Image("bg")
-                                            .resizable()
-                                            .scaledToFit()
-                                    )
-                            }
+                               
+                                ZStack {
+                                    Image(images.randomElement() ?? "defaultImage")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width:280,height: 280)
+                                        .clipShape(RoundedRectangle(cornerRadius: 40)).onAppear()
+                                    
+                                    Image("human_base").resizable().frame(width: 110, height: 110)
+                                        .padding(.top,150)
+                                }
+                                    
+                            }.padding()
                         }
                         
                         CustomDivider(textToDisplay: "Boss")
@@ -62,13 +73,25 @@ struct HomePage: View {
                         
                         ForEach(0..<missions.count, id: \.self){index in
                             NavigationLink(destination: QuestCardFull(isClicked: $isClicked[index],tempComplementation: $missionComplete, title: missions[index], progress: counter)) {
-                                Text(missions[index])
-                                    .foregroundColor(.white) // Text color
-                                    .padding(.vertical, 15) // Vertical padding
+                               
+                                   // Image("Button_home")
+                                        //.resizable().background(isClicked[index] ? Image("Button_home").opacity(0.5) : Image("Button_home").opacity(1.0))
+                                    
+                                VStack {
+                                    Text(missions[index])
+                                        .foregroundColor(.white).background(isClicked[index] ? Image("Button_home").opacity(0.5) : Image("Button_home").opacity(1.0))
+                                }.padding(.vertical)
+                                        // Button background color
+                                        
+                                
+                                // Text color
+                                    
+                                    /*.padding(.vertical, 15) // Vertical padding
                                     .padding(.horizontal, 30) // Horizontal padding
-                                    .frame(width: 300, height: 80) // Set explicit frame size for the button
-                                    .background(isClicked[index] ? Color("button").opacity(0.5) : Color("button").opacity(1.0)) // Button background color
-                                    .cornerRadius(20) // Rounded corners
+                                    .frame(width: 300, height: 80)*/ // Set explicit frame size for the button
+                                    /*(isClicked[index] ? Color("button").opacity(0.5) : Color("button").opacity(1.0)) // Button background color
+                                    .cornerRadius(20)*/ // Rounded corners
+                                
                             }
                             .foregroundColor(.white) // Ensure the text color is white if needed
                             .disabled(isClicked[index]) // Disable the button if it has been clicked
