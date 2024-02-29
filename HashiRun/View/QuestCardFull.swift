@@ -31,10 +31,11 @@ struct QuestCardFull: View {
                     Spacer()
                     
                     Button {
-                        isClicked = true
+                        self.isClicked = true
+                        
                         tempComplementation += 1
                         
-                         
+                        
                         if progress < 1.0 {
                             progress += 0.50
                         }else{
@@ -42,22 +43,27 @@ struct QuestCardFull: View {
                             level += 1
                             skillPoint += 1
                         }
-                         
-                        
-                    } label: {
-                        Text("Start")
-                            .foregroundColor(.white) // Text color
-                            .padding(.vertical, 15) // Vertical padding
-                            .padding(.horizontal, 30) // Horizontal padding
-                            .frame(width: 300, height:80) // Set explicit frame size for the button
-                            .background(isClicked ? Color.green.opacity(0.5) : Color.green.opacity(1.0)) // Button background color
-                            .cornerRadius(20) // Rounded corners
                     }
-                    .foregroundColor(.white) // Ensure the text color is white if needed
-                    .disabled(isClicked)
-                  
+                    
+                label: {
+                    Text("Start")
+                        .foregroundColor(.white) // Text color
+                        .padding(.vertical, 15) // Vertical padding
+                        .padding(.horizontal, 30) // Horizontal padding
+                        .frame(width: 300, height:80) // Set explicit frame size for the button
+                        .background(isClicked ? Color.green.opacity(0.5) : Color.green.opacity(1.0)) // Button background color
+                        .cornerRadius(20) // Rounded corners
                 }
-                
+                .foregroundColor(.white) // Ensure the text color is white if needed
+                .disabled(isClicked)
+                    
+                }
+                .background(
+                    NavigationLink(destination: MissionView(), isActive: $isClicked) {
+                        EmptyView()
+                    }
+                        .hidden()
+                )
             }
             
         }
