@@ -162,6 +162,8 @@ struct MissionView: View {
                             )
                         }
                     }
+                    
+                    Spacer()
                 }
             }
         }
