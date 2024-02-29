@@ -62,7 +62,7 @@ struct CharacterView: View {
                                     
                                     VStack{
                                         ForEach(0..<skills.count, id: \.self){index in
-                                            Text("\(skillValues[0].skillValue[index])")
+                                            Text("\(skillValues[skillValues.startIndex].skillValue[index])")
                                                 .font(Font.custom("Press Start", size: 15))
                                                 .padding()
                                         }
@@ -73,7 +73,7 @@ struct CharacterView: View {
                                             Button {
                                                 //Increase the skillvalues only if i have aviable skillPoints
                                                 if skillPoint > 0{
-                                                    skillValues[0].skillValue[index] += 1
+                                                    skillValues[skillValues.startIndex].skillValue[index] += 1
                                                     skillPoint -= 1
                                                 }
                                             } label: {
@@ -117,15 +117,8 @@ struct CharacterView: View {
                 
             }
             
-        }.onAppear{
-            self.create()
         }
         
-    }
-    
-    private func create(){
-        let skillsV = Skill(skillValue: [0,0,0])
-        context.insert(skillsV)
     }
     
 }

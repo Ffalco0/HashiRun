@@ -41,6 +41,12 @@ struct HomePage: View {
                             }
                         }
                         
+                        Button(action: {
+                            print(skillValues.count)
+                        }, label: {
+                            Text("tester for skillValues number")
+                        })
+                        
                         CustomDivider(textToDisplay: "Boss").padding(.vertical)
                         
                         Button {
@@ -98,8 +104,18 @@ struct HomePage: View {
                         
                     }
                 }
+            }.onAppear{
+                if skillValues.isEmpty{
+                    self.create()
+                }
             }
         }
     }
+    
+    private func create(){
+        let skillsV = Skill(skillValue: [0,0,0])
+        context.insert(skillsV)
+    }
+    
     
 }

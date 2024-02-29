@@ -18,6 +18,9 @@
 		74D555CA2B8DEB9E00EEA266 /* prstart.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74D555C92B8DEAB300EEA266 /* prstart.ttf */; };
 		74D555CB2B8DEBA000EEA266 /* prstartk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74D555C82B8DEAB200EEA266 /* prstartk.ttf */; };
 		74D555CD2B8F71A600EEA266 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555CC2B8F71A600EEA266 /* Skill.swift */; };
+		74E52F5C2B908EAD008018CD /* IdleRecapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E52F5B2B908EAD008018CD /* IdleRecapView.swift */; };
+		74E52F5E2B908F4B008018CD /* MissionEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E52F5D2B908F4B008018CD /* MissionEvents.swift */; };
+		74E52F602B909D5F008018CD /* Boss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E52F5F2B909D5F008018CD /* Boss.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		74D555C82B8DEAB200EEA266 /* prstartk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = prstartk.ttf; sourceTree = "<group>"; };
 		74D555C92B8DEAB300EEA266 /* prstart.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = prstart.ttf; sourceTree = "<group>"; };
 		74D555CC2B8F71A600EEA266 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
+		74E52F5B2B908EAD008018CD /* IdleRecapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdleRecapView.swift; sourceTree = "<group>"; };
+		74E52F5D2B908F4B008018CD /* MissionEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionEvents.swift; sourceTree = "<group>"; };
+		74E52F5F2B909D5F008018CD /* Boss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boss.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,7 @@
 				74D555682B88D35C00EEA266 /* HomePage.swift */,
 				74D555742B88F1C700EEA266 /* CharacterView.swift */,
 				74D555872B88F9D900EEA266 /* QuestCardFull.swift */,
+				74E52F5B2B908EAD008018CD /* IdleRecapView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -103,6 +110,8 @@
 				74D555C02B8CA2E900EEA266 /* CustomElements.swift */,
 				74D555BC2B8C9BEF00EEA266 /* QuestText.swift */,
 				74D555CC2B8F71A600EEA266 /* Skill.swift */,
+				74E52F5D2B908F4B008018CD /* MissionEvents.swift */,
+				74E52F5F2B909D5F008018CD /* Boss.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -190,10 +199,13 @@
 			files = (
 				74D555CD2B8F71A600EEA266 /* Skill.swift in Sources */,
 				74D555752B88F1C700EEA266 /* CharacterView.swift in Sources */,
+				74E52F5C2B908EAD008018CD /* IdleRecapView.swift in Sources */,
 				74D555BD2B8C9BEF00EEA266 /* QuestText.swift in Sources */,
 				74D555882B88F9D900EEA266 /* QuestCardFull.swift in Sources */,
+				74E52F5E2B908F4B008018CD /* MissionEvents.swift in Sources */,
 				74D555692B88D35C00EEA266 /* HomePage.swift in Sources */,
 				74D555672B88D35C00EEA266 /* HashiRunApp.swift in Sources */,
+				74E52F602B909D5F008018CD /* Boss.swift in Sources */,
 				74D555C12B8CA2E900EEA266 /* CustomElements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
