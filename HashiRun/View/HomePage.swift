@@ -106,11 +106,23 @@ struct HomePage: View {
                         
                     }
                 }
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        HStack {
+                            NavigationLink(destination:ContentView()){
+                                Text("History")
+                                    .font(Font.custom("Press Start", size: 15))
+                                Image(systemName: "plus")
+                            }
+                        }
+                    }
+                }
             }.onAppear{
                 if skillValues.isEmpty{
                     self.create()
                 }
             }
+            
         }
     }
     
