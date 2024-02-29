@@ -16,11 +16,12 @@ struct QuestCardFull: View {
     @Binding var isClicked: Bool
     @Binding var tempComplementation: Int
     
+    
     var title: String
     
     var body: some View {
-        NavigationStack{
-            ZStack{
+        NavigationStack {
+            ZStack {
                 Color("background").edgesIgnoringSafeArea(.all)
                 
                 VStack{
@@ -30,11 +31,10 @@ struct QuestCardFull: View {
                     
                     Spacer()
                     
-                    Button {
-                        isClicked = true
+                    Button(action: {
+                        self.isClicked = true
                         tempComplementation += 1
                         
-                         
                         if progress < 1.0 {
                             progress += 0.50
                         }else{
@@ -42,9 +42,8 @@ struct QuestCardFull: View {
                             level += 1
                             skillPoint += 1
                         }
-                         
-                        
-                    } label: {
+                    })
+                    {
                         Text("Start")
                             .foregroundColor(.white) // Text color
                             .padding(.vertical, 15) // Vertical padding
@@ -55,11 +54,16 @@ struct QuestCardFull: View {
                     }
                     .foregroundColor(.white) // Ensure the text color is white if needed
                     .disabled(isClicked)
-                  
+                    
                 }
                 
             }
-            
+            .background(
+                NavigationLink(destination: MissionView(),isActive: $isClicked) {
+                    EmptyView()
+                }
+                    .hidden()
+            )
         }
         
     }

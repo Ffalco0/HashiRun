@@ -62,6 +62,9 @@ struct CharacterView: View {
                                     
                                     VStack{
                                         ForEach(0..<skills.count, id: \.self){index in
+                                            if skillValues.isEmpty{
+                                                Text("No")
+                                            }
                                             Text("\(skillValues[0].skillValue[index])")
                                                 .font(Font.custom("Press Start", size: 15))
                                                 .padding()

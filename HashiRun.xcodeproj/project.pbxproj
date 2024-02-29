@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C88696F2B8FED0E00432ECC /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C88696E2B8FED0E00432ECC /* Stopwatch.swift */; };
+		4C8869712B8FED4100432ECC /* StopwatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8869702B8FED4100432ECC /* StopwatchViewModel.swift */; };
+		4C8869742B8FEDDD00432ECC /* MissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8869732B8FEDDD00432ECC /* MissionView.swift */; };
+		4C8869762B8FEDFE00432ECC /* FullMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8869752B8FEDFE00432ECC /* FullMapView.swift */; };
 		74D555672B88D35C00EEA266 /* HashiRunApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555662B88D35C00EEA266 /* HashiRunApp.swift */; };
 		74D555692B88D35C00EEA266 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555682B88D35C00EEA266 /* HomePage.swift */; };
 		74D5556B2B88D35D00EEA266 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74D5556A2B88D35D00EEA266 /* Assets.xcassets */; };
@@ -21,6 +25,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C88696E2B8FED0E00432ECC /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
+		4C8869702B8FED4100432ECC /* StopwatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewModel.swift; sourceTree = "<group>"; };
+		4C8869732B8FEDDD00432ECC /* MissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionView.swift; sourceTree = "<group>"; };
+		4C8869752B8FEDFE00432ECC /* FullMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullMapView.swift; sourceTree = "<group>"; };
 		74D555632B88D35C00EEA266 /* HashiRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HashiRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74D555662B88D35C00EEA266 /* HashiRunApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashiRunApp.swift; sourceTree = "<group>"; };
 		74D555682B88D35C00EEA266 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
@@ -48,6 +56,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C8869722B8FED4D00432ECC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4C8869702B8FED4100432ECC /* StopwatchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		74D5555A2B88D35C00EEA266 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +87,7 @@
 				74D555802B88F59100EEA266 /* Info.plist */,
 				74D555662B88D35C00EEA266 /* HashiRunApp.swift */,
 				74D555C62B8DEA6500EEA266 /* Model */,
+				4C8869722B8FED4D00432ECC /* ViewModel */,
 				74D555C52B8DEA0300EEA266 /* View */,
 				74D555C72B8DEA9600EEA266 /* Fonts */,
 				74D5556A2B88D35D00EEA266 /* Assets.xcassets */,
@@ -93,6 +110,8 @@
 				74D555682B88D35C00EEA266 /* HomePage.swift */,
 				74D555742B88F1C700EEA266 /* CharacterView.swift */,
 				74D555872B88F9D900EEA266 /* QuestCardFull.swift */,
+				4C8869732B8FEDDD00432ECC /* MissionView.swift */,
+				4C8869752B8FEDFE00432ECC /* FullMapView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -103,6 +122,7 @@
 				74D555C02B8CA2E900EEA266 /* CustomElements.swift */,
 				74D555BC2B8C9BEF00EEA266 /* QuestText.swift */,
 				74D555CC2B8F71A600EEA266 /* Skill.swift */,
+				4C88696E2B8FED0E00432ECC /* Stopwatch.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -189,12 +209,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				74D555CD2B8F71A600EEA266 /* Skill.swift in Sources */,
+				4C8869762B8FEDFE00432ECC /* FullMapView.swift in Sources */,
 				74D555752B88F1C700EEA266 /* CharacterView.swift in Sources */,
+				4C8869712B8FED4100432ECC /* StopwatchViewModel.swift in Sources */,
 				74D555BD2B8C9BEF00EEA266 /* QuestText.swift in Sources */,
 				74D555882B88F9D900EEA266 /* QuestCardFull.swift in Sources */,
 				74D555692B88D35C00EEA266 /* HomePage.swift in Sources */,
 				74D555672B88D35C00EEA266 /* HashiRunApp.swift in Sources */,
 				74D555C12B8CA2E900EEA266 /* CustomElements.swift in Sources */,
+				4C88696F2B8FED0E00432ECC /* Stopwatch.swift in Sources */,
+				4C8869742B8FEDDD00432ECC /* MissionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,10 +354,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"HashiRun/Preview Content\"";
-				DEVELOPMENT_TEAM = 76686GRWFP;
+				DEVELOPMENT_TEAM = GL423RB25N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HashiRun/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We want to use your current location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -345,7 +370,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.unluckycowboy.HashiRun;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lorenzoovera.HashiRun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -367,10 +392,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"HashiRun/Preview Content\"";
-				DEVELOPMENT_TEAM = 76686GRWFP;
+				DEVELOPMENT_TEAM = GL423RB25N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HashiRun/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We want to use your current location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -382,7 +408,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.unluckycowboy.HashiRun;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lorenzoovera.HashiRun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
