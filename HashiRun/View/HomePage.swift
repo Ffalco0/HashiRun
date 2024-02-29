@@ -124,6 +124,7 @@ struct HomePage: View {
             }
             
         }
+        .navigationBarBackButtonHidden()
     }
     
     private func create(){

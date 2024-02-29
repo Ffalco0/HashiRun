@@ -16,6 +16,13 @@ struct MissionView: View {
         span: .init(latitudeDelta: 0.2, longitudeDelta: 0.2)
     )
     
+    var regionBinding: Binding<MKCoordinateRegion> {
+            .init(
+                get: { region },
+                set: { newValue in DispatchQueue.main.async { region = newValue } }
+            )
+        }
+    
     let locationManager = CLLocationManager()
     
     /// Current progress time expresed in seconds
@@ -23,7 +30,7 @@ struct MissionView: View {
     @State private var isRunning = false
     @State private var showAlert = false
     @State private var isFullScreenMapPresented = false
-    
+    @State var backToHome: Bool = false
     /// Computed properties to get the progressTime in hh:mm:ss format
     var hours: Int {
         progressTime / 3600
@@ -42,8 +49,10 @@ struct MissionView: View {
     
     var body: some View {
         NavigationStack {
+            NavigationLink(destination: HomePage(), isActive: self.$backToHome) { EmptyView() }
+            
             Map (
-                coordinateRegion: $region,
+                coordinateRegion: regionBinding,
                 showsUserLocation: true,
                 userTrackingMode: .constant(.follow)
             )
@@ -133,6 +142,7 @@ struct MissionView: View {
                             }
                         }
                         
+
                         Button(action: {
                             showAlert = true
                             //progressTime = 0
@@ -154,10 +164,10 @@ struct MissionView: View {
                                 message: Text("Stopping the timer will reset the progress. Do you want to continue?"),
                                 primaryButton: .cancel(),
                                 secondaryButton: .destructive(Text("Stop"), action: {
-                                    // Additional actions when the user confirms stopping
                                     timer?.invalidate()
                                     isRunning = false
                                     progressTime = 0
+                                    self.backToHome = true
                                 })
                             )
                         }
@@ -167,6 +177,7 @@ struct MissionView: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden()
     }
 }
 

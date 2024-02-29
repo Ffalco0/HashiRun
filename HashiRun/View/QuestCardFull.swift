@@ -16,11 +16,13 @@ struct QuestCardFull: View {
     @Binding var isClicked: Bool
     @Binding var tempComplementation: Int
     
+    @State private var isLinkActive = false
+    
     var title: String
     
     var body: some View {
-        NavigationStack{
-            ZStack{
+        NavigationStack {
+            ZStack {
                 Color("background").edgesIgnoringSafeArea(.all)
                 
                 VStack{
@@ -29,41 +31,49 @@ struct QuestCardFull: View {
                         .font(.custom("Press Start", size: 20))
                     
                     Spacer()
-                    
-                    Button {
-                        self.isClicked = true
+                    //NavigationLink(destination: MissionView(), isActive: $isLinkActive) {
+                        Button (action: {
+                            self.isClicked = true
+                            
+                            
+                            
+                            tempComplementation += 1
+                            
+                            if progress < 1.0 {
+                                progress += 0.50
+                            }else{
+                                progress = 0.0
+                                level += 1
+                                skillPoint += 1
+                            }
+                            self.isLinkActive = true
+                        })
                         
-                        tempComplementation += 1
+                    {
+                            Text("Start")
+                                .foregroundColor(.white) // Text color
+                                .padding(.vertical, 15) // Vertical padding
+                                .padding(.horizontal, 30) // Horizontal padding
+                                .frame(width: 300, height:80) // Set explicit frame size for the button
+                                .background(isClicked ? Color.green.opacity(0.5) : Color.green.opacity(1.0)) // Button background color
+                                .cornerRadius(20) // Rounded corners
+                                .background(
+                                    NavigationLink(destination: MissionView(), isActive: $isLinkActive) {
+                                        EmptyView()
+                                    }
+                                        .id(UUID())
+                                        //.hidden()
+                                )
                         
-                        
-                        if progress < 1.0 {
-                            progress += 0.50
-                        }else{
-                            progress = 0.0
-                            level += 1
-                            skillPoint += 1
-                        }
                     }
+                    .foregroundColor(.white) // Ensure the text color is white if needed
+                    .disabled(isClicked)
                     
-                label: {
-                    Text("Start")
-                        .foregroundColor(.white) // Text color
-                        .padding(.vertical, 15) // Vertical padding
-                        .padding(.horizontal, 30) // Horizontal padding
-                        .frame(width: 300, height:80) // Set explicit frame size for the button
-                        .background(isClicked ? Color.green.opacity(0.5) : Color.green.opacity(1.0)) // Button background color
-                        .cornerRadius(20) // Rounded corners
-                }
-                .foregroundColor(.white) // Ensure the text color is white if needed
-                .disabled(isClicked)
                     
                 }
-                .background(
-                    NavigationLink(destination: MissionView(), isActive: $isClicked) {
-                        EmptyView()
-                    }
-                        .hidden()
-                )
+                
+                
+                
             }
             
         }

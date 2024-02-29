@@ -6,6 +6,14 @@ struct FullMapView: View {
         center: .init(latitude: 31.334_900,longitude: -122.009_020),
         span: .init(latitudeDelta: 0.2, longitudeDelta: 0.2)
     )
+    
+    var regionBinding: Binding<MKCoordinateRegion> {
+            .init(
+                get: { region },
+                set: { newValue in DispatchQueue.main.async { region = newValue } }
+            )
+        }
+    
     @Environment(\.dismiss) private var dismiss
     let locationManager = CLLocationManager()
     
@@ -16,7 +24,7 @@ struct FullMapView: View {
             }
         }
             Map (
-                coordinateRegion: $region,
+                coordinateRegion: regionBinding,
                 showsUserLocation: true,
                 userTrackingMode: .constant(.follow)
             )
