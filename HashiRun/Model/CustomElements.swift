@@ -12,13 +12,13 @@ struct CustomDivider: View {
     var textToDisplay:String
     var body: some View {
         HStack{
-            VStack { Divider().background(Color.gray) }
+            VStack { Divider().frame(height: 2).background(Color.gray) }
             Text(textToDisplay)
                 .multilineTextAlignment(.center)
-                .font(.custom("Press Start", size: 10))
+                .font(.custom("Press Start", size: 15))
                 .foregroundColor(.gray)
-                .padding(.horizontal, 8)
-            VStack { Divider().background(Color.gray) }
+                .padding(.horizontal, 1)
+            VStack { Divider().frame(height: 2).background(Color.gray) }
         }
     }
 }
