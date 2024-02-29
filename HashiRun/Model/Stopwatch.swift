@@ -1,11 +1,9 @@
 //
-//  stpwtch.swift
-//  RunningRPG
+//  StopWatch.swift
+//  HashiRun
 //
-//  Created by Lorenzo Overa on 21/02/24.
+//  Created by Lorenzo Overa on 29/02/24.
 //
-
-
 
 import SwiftUI
 

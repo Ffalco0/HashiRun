@@ -1,9 +1,10 @@
 //
-//  StopWatchViewModel.swift
-//  RunningRPG
+//  StopwatchViewModel.swift
+//  HashiRun
 //
-//  Created by Lorenzo Overa on 20/02/24.
+//  Created by Lorenzo Overa on 29/02/24.
 //
+
 import SwiftUI
 
 class StopwatchViewModel: ObservableObject {

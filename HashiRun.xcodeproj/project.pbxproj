@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C8869822B90D16F00432ECC /* StopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8869812B90D16F00432ECC /* StopWatch.swift */; };
+		4C8869842B90D1BB00432ECC /* StopwatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8869832B90D1BB00432ECC /* StopwatchViewModel.swift */; };
 		74D555672B88D35C00EEA266 /* HashiRunApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555662B88D35C00EEA266 /* HashiRunApp.swift */; };
 		74D555692B88D35C00EEA266 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555682B88D35C00EEA266 /* HomePage.swift */; };
 		74D5556B2B88D35D00EEA266 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74D5556A2B88D35D00EEA266 /* Assets.xcassets */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C8869812B90D16F00432ECC /* StopWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatch.swift; sourceTree = "<group>"; };
+		4C8869832B90D1BB00432ECC /* StopwatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewModel.swift; sourceTree = "<group>"; };
 		74D555632B88D35C00EEA266 /* HashiRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HashiRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74D555662B88D35C00EEA266 /* HashiRunApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashiRunApp.swift; sourceTree = "<group>"; };
 		74D555682B88D35C00EEA266 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 				74D555CC2B8F71A600EEA266 /* Skill.swift */,
 				74E52F5D2B908F4B008018CD /* MissionEvents.swift */,
 				74E52F5F2B909D5F008018CD /* Boss.swift */,
+				4C8869812B90D16F00432ECC /* StopWatch.swift */,
+				4C8869832B90D1BB00432ECC /* StopwatchViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -203,12 +209,14 @@
 				74D555CD2B8F71A600EEA266 /* Skill.swift in Sources */,
 				74D555752B88F1C700EEA266 /* CharacterView.swift in Sources */,
 				8BCCFCED2B90CA7600BD941C /* QuestView.swift in Sources */,
+				4C8869822B90D16F00432ECC /* StopWatch.swift in Sources */,
 				74E52F5C2B908EAD008018CD /* IdleRecapView.swift in Sources */,
 				74D555BD2B8C9BEF00EEA266 /* QuestText.swift in Sources */,
 				74D555882B88F9D900EEA266 /* QuestCardFull.swift in Sources */,
 				74E52F5E2B908F4B008018CD /* MissionEvents.swift in Sources */,
 				74D555692B88D35C00EEA266 /* HomePage.swift in Sources */,
 				74D555672B88D35C00EEA266 /* HashiRunApp.swift in Sources */,
+				4C8869842B90D1BB00432ECC /* StopwatchViewModel.swift in Sources */,
 				74E52F602B909D5F008018CD /* Boss.swift in Sources */,
 				74D555C12B8CA2E900EEA266 /* CustomElements.swift in Sources */,
 			);
