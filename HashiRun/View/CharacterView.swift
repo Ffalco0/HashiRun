@@ -6,41 +6,40 @@
 //
 
 import SwiftUI
-
+import SwiftData
 
 struct CharacterView: View {
-    @ObservedObject var progress: Counter
-    /*
-     @State private var level = 1
-     @State private var skillPoint = 0
-     
-     private var skills: [String] = ["Strenght","Dex","Wisdom"]
-     @State private var skillValue: [CGFloat]
-     */
-    init(progress: Counter) {
-        self._progress = ObservedObject(initialValue: progress)
-    }
+    @AppStorage("progress", store: UserDefaults(suiteName: "character")) var progress: Double = 0.0
+    @AppStorage("level", store: UserDefaults(suiteName: "character")) var level : Int = 1
+    @AppStorage("skillpoint", store: UserDefaults(suiteName: "character")) var skillPoint: Int = 0
+    @AppStorage("image", store: UserDefaults(suiteName: "character")) var image: String = "wizard"
+    private var skills: [String] = ["Strenght", "Dexstry","Wisdom"]
     
-    @EnvironmentObject var character: Character
+    
+    @Environment(\.modelContext) private var context
+    @Query private var skillValues: [Skill]
     
     var body: some View {
+        
         NavigationStack{
             ZStack{
                 Color("background").edgesIgnoringSafeArea(.all)
+                
                 ScrollView {
                     VStack{
                         //MARK: - Character section
                         Section {
-                            Image("wizard")
+                            Image(image)
                                 .resizable()
                                 .frame(width: 200.0, height: 250.0)
                                 .clipShape(.rect)
+                            
                             //MARK: - Level section
                             VStack{
-                                Text("Lvl \(character.level)")
+                                Text("Lvl \(level)")
                                     .font(Font.custom("Press Start", size: 15))
                                 //Start working on the progress bar
-                                CustomProgressBar(progress: progress.progress, imageName: "back")
+                                CustomProgressBar(progress: progress, imageName: "back")
                                     .padding()
                             }.padding()
                             Spacer()
@@ -54,69 +53,73 @@ struct CharacterView: View {
                                 }
                                 HStack{
                                     VStack{
-                                        ForEach(0..<character.skills.count, id: \.self){index in
-                                            Text(character.skills[index])
+                                        ForEach(0..<skills.count, id: \.self){index in
+                                            Text(skills[index])
                                                 .font(Font.custom("Press Start", size: 15))
                                                 .padding()
                                         }
                                     }.padding()
                                     
                                     VStack{
-                                        ForEach(0..<character.skillValue.count, id: \.self){index in
-                                            Text("\(character.skillValue[index])")
+                                        ForEach(0..<skills.count, id: \.self){index in
+                                            Text("\(skillValues[skillValues.startIndex].skillValue[index])")
                                                 .font(Font.custom("Press Start", size: 15))
                                                 .padding()
                                         }
                                     }.padding()
                                     
                                     VStack{
-                                        ForEach(0..<character.skillValue.count, id: \.self){index in
+                                        ForEach(0..<skills.count, id: \.self){index in
                                             Button {
-                                                if character.skillPoint > 0{
-                                                    character.skillValue[index] += 1
-                                                    character.skillPoint -= 1
+                                                //Increase the skillvalues only if i have aviable skillPoints
+                                                if skillPoint > 0{
+                                                    skillValues[skillValues.startIndex].skillValue[index] += 1
+                                                    skillPoint -= 1
                                                 }
                                             } label: {
                                                 Image(systemName: "plus")
                                             }.padding()
-
+                                            
                                         }
                                     }.padding()
                                     
                                 }
                             }
-                            Divider()
-                                .frame(height: 20)
-                            Section{
-                                //MARK: - Collectibles section
-                                HStack {
-                                    Text("COLLECTIBLES")
-                                        .font(Font.custom("Press Start", size: 20))
-                                        .padding()
-                                        .fontWeight(.bold)
-                                    Spacer()
-                                }
-                                CollectiblesView(images: ["coll 1", "coll 2", "coll 3", "coll 4"])
-                            }
                         }
+                        
+                        Divider()
+                            .frame(height: 20)
+                        
+                        Section{
+                            //MARK: - Collectibles section
+                            HStack {
+                                Text("COLLECTIBLES")
+                                    .font(Font.custom("Press Start", size: 20))
+                                    .padding()
+                                    .fontWeight(.bold)
+                                Spacer()
+                            }
+                            CollectiblesView(images: ["bow","journal", "key", "potion","ring"])
+                        }
+                        
                     }
-                    .navigationTitle("The knight")
+                    .navigationTitle("Name Of Your Adventurer")
                     .toolbar {
                         ToolbarItem(placement: .topBarTrailing) {
                             HStack {
-                                Text("\(character.skillPoint)")
+                                Text("\(skillPoint)")
                                     .font(Font.custom("Press Start", size: 15))
                                 Image(systemName: "gear")
                             }
                         }
-                    }
-                    
+                    } 
                 }
+                
             }
             
-            
-            
         }
+        
     }
+    
 }
 

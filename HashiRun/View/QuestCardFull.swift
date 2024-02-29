@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct QuestCardFull: View {
+    //Character shared Values
+    @AppStorage("progress", store: UserDefaults(suiteName: "character")) var progress: Double = 0.0
+    @AppStorage("level", store: UserDefaults(suiteName: "character")) var level : Int = 1
+    @AppStorage("skillpoint", store: UserDefaults(suiteName: "character")) var skillPoint: Int = 0
+    
     @Binding var isClicked: Bool
     @Binding var tempComplementation: Int
     
     var title: String
-    
-    @ObservedObject var progress: Counter
-    @EnvironmentObject var character: Character
     
     var body: some View {
         NavigationStack{
@@ -31,13 +33,17 @@ struct QuestCardFull: View {
                     Button {
                         isClicked = true
                         tempComplementation += 1
-                        if progress.progress < 1.0 {
-                            progress.progress += 0.50
+                        
+                         
+                        if progress < 1.0 {
+                            progress += 0.50
                         }else{
-                            progress.progress = 0.0
-                            character.level += 1
-                            character.skillPoint += 1
+                            progress = 0.0
+                            level += 1
+                            skillPoint += 1
                         }
+                         
+                        
                     } label: {
                         Text("Start")
                             .foregroundColor(.white) // Text color
@@ -49,9 +55,13 @@ struct QuestCardFull: View {
                     }
                     .foregroundColor(.white) // Ensure the text color is white if needed
                     .disabled(isClicked)
+                  
                 }
+                
             }
+            
         }
+        
     }
 }
 
