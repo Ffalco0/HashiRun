@@ -64,13 +64,6 @@ struct HomePage: View {
                                 }
                             }
                         }
-                        
-                        Button(action: {
-                            print(skillValues.count)
-                        }, label: {
-                            Text("tester for skillValues number")
-                        })
-                        
                         CustomDivider(textToDisplay: "Boss").padding(.vertical)
                         
                         Button {
