@@ -47,6 +47,8 @@ struct MissionView: View {
     /// Increase progressTime each second
     @State private var timer: Timer?
     
+    @State private var progress: CGFloat = 0.0
+    
     var body: some View {
         NavigationStack {
             NavigationLink(destination: HomePage(), isActive: self.$backToHome) { EmptyView() }
@@ -118,7 +120,64 @@ struct MissionView: View {
                                 }
                             )
                     }
+                    HStack(spacing: 20) {
+                        ZStack {
+                            
+                            GeometryReader { geometry in
+                                RoundedRectangle(cornerRadius: 25.0)
+                                    .fill(LinearGradient(gradient: Gradient(colors: [.gray]), startPoint: .leading, endPoint: .trailing))
+                                    .frame(width: geometry.size.width * progress, height: geometry.size.height)
+                                    .animation(.linear(duration: 3), value: progress)
+                            }
+                            .mask(
+                                RoundedRectangle(cornerRadius: 25.0)
+                                    .frame(width: 350, height: 100)
+                            )
+
+                            
+                            RoundedRectangle(cornerRadius: 25.0)
+                                .fill(Color.gray)
+                                .frame(width: 350, height: 100)
+                            
+                                .onTapGesture {
+                                    if isRunning {
+                                        timer?.invalidate()
+                                    } else {
+                                        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+                                            progressTime += 1
+                                        })
+                                    }
+                                    isRunning.toggle()
+                                }
+                                .gesture(
+                                    LongPressGesture(minimumDuration: 3.0)
+                                      
+                                        .onEnded { _ in
+                                            showAlert = true
+                                        }
+                                )
+                            
+                           
+                            
+                            Text(isRunning ? "Pause/Stop" : "Play/Stop")
+                                .font(.title)
+                        }
+                    }
+                    .alert(isPresented: $showAlert) {
+                        Alert(
+                            title: Text("Are you sure?"),
+                            message: Text("Stopping the timer will reset the progress. Do you want to continue?"),
+                            primaryButton: .cancel(),
+                            secondaryButton: .destructive(Text("Stop"), action: {
+                                timer?.invalidate()
+                                isRunning = false
+                                progressTime = 0
+                                self.backToHome = true // Trigger navigation or state change
+                            })
+                        )
+                    }
                     
+                    /*
                     HStack(spacing: 20) {
                         Button(action: {
                             if isRunning {
@@ -134,30 +193,18 @@ struct MissionView: View {
                                 RoundedRectangle(cornerRadius: 25.0)
                                     .fill(Color.gray)
                                     .opacity(0.4)
-                                    .frame(width: 170, height: 100)
+                                    .frame(width: 350, height: 100)
                                 
-                                Image(isRunning ? "pause" : "play")
+                                Text(isRunning ? "Pause/Stop" : "Play/Stop")
                                     .font(.title)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.black)
                             }
                         }
-                        
-
-                        Button(action: {
-                            showAlert = true
-                            //progressTime = 0
-                        }) {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 25.0)
-                                    .fill(Color.gray)
-                                    .opacity(0.4)
-                                    .frame(width: 170, height: 100)
-                                
-                                Image("stop")
-                                    .font(.title)
-                                    .foregroundColor(.white)
-                            }
-                        }
+                        .gesture(LongPressGesture(minimumDuration: 3.0)
+                            .onEnded { _ in
+                                showAlert = true
+                                print(showAlert)
+                        })
                         .alert(isPresented: $showAlert) {
                             Alert(
                                 title: Text("Are you sure?"),
@@ -171,7 +218,7 @@ struct MissionView: View {
                                 })
                             )
                         }
-                    }
+                    }*/
                     
                     Spacer()
                 }

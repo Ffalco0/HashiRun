@@ -34,7 +34,7 @@ struct QuestCardFull: View {
                     //NavigationLink(destination: MissionView(), isActive: $isLinkActive) {
                         Button (action: {
                             self.isClicked = true
-                        
+                            
                             tempComplementation += 1
                             
                             if progress < 1.0 {
@@ -59,7 +59,7 @@ struct QuestCardFull: View {
                                     NavigationLink(destination: MissionView(), isActive: $isLinkActive) {
                                         EmptyView()
                                     }
-                                        .id(UUID())
+                                        .id(UUID(
                                         //.hidden()
                                 )
                         
