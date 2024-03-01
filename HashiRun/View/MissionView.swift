@@ -240,7 +240,7 @@ struct MissionView: View {
                 }
             } .onAppear {
                 pedometerManager.startPedometerUpdates()
-                //healthKitManager.requestAuthorization()
+                healthKitManager.requestAuthorization()
             }
         }
         .navigationBarBackButtonHidden()

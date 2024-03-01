@@ -382,8 +382,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HashiRun/Info.plist;
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need to acces your health data in order to calculate your Calories burned during training";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We need to acces your health data in order to calculate your Calories burned during training";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location in order to track your training outside";
 				INFOPLIST_KEY_NSMotionUsageDescription = "We need to acces motion sensor in order to keep track of your training progress";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -423,8 +423,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HashiRun/Info.plist;
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need to acces your health data in order to calculate your Calories burned during training";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We need to acces your health data in order to calculate your Calories burned during training";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location in order to track your training outside";
 				INFOPLIST_KEY_NSMotionUsageDescription = "We need to acces motion sensor in order to keep track of your training progress";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
