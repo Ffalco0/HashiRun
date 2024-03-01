@@ -12,6 +12,7 @@
 		4C8869862B90D35500432ECC /* MissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8869852B90D35500432ECC /* MissionView.swift */; };
 		4C8869882B90D36E00432ECC /* FullMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8869872B90D36E00432ECC /* FullMapView.swift */; };
 		743088D32B9221BD0008B187 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743088D22B9221BD0008B187 /* Motion.swift */; };
+		743088D52B922C9C0008B187 /* Calories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743088D42B922C9C0008B187 /* Calories.swift */; };
 		74D555672B88D35C00EEA266 /* HashiRunApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555662B88D35C00EEA266 /* HashiRunApp.swift */; };
 		74D555692B88D35C00EEA266 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555682B88D35C00EEA266 /* HomePage.swift */; };
 		74D5556B2B88D35D00EEA266 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74D5556A2B88D35D00EEA266 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		4C8869852B90D35500432ECC /* MissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionView.swift; sourceTree = "<group>"; };
 		4C8869872B90D36E00432ECC /* FullMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullMapView.swift; sourceTree = "<group>"; };
 		743088D22B9221BD0008B187 /* Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>"; };
+		743088D42B922C9C0008B187 /* Calories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calories.swift; sourceTree = "<group>"; };
 		74D555632B88D35C00EEA266 /* HashiRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HashiRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74D555662B88D35C00EEA266 /* HashiRunApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashiRunApp.swift; sourceTree = "<group>"; };
 		74D555682B88D35C00EEA266 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				74E52F5F2B909D5F008018CD /* Boss.swift */,
 				4C8869812B90D16F00432ECC /* StopWatch.swift */,
 				743088D22B9221BD0008B187 /* Motion.swift */,
+				743088D42B922C9C0008B187 /* Calories.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74D555CD2B8F71A600EEA266 /* Skill.swift in Sources */,
+				743088D52B922C9C0008B187 /* Calories.swift in Sources */,
 				74D555752B88F1C700EEA266 /* CharacterView.swift in Sources */,
 				8BCCFCED2B90CA7600BD941C /* QuestView.swift in Sources */,
 				4C8869822B90D16F00432ECC /* StopWatch.swift in Sources */,
@@ -378,6 +382,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HashiRun/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location in order to track your training outside";
 				INFOPLIST_KEY_NSMotionUsageDescription = "We need to acces motion sensor in order to keep track of your training progress";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -417,6 +423,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HashiRun/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location in order to track your training outside";
 				INFOPLIST_KEY_NSMotionUsageDescription = "We need to acces motion sensor in order to keep track of your training progress";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
