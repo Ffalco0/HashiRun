@@ -50,6 +50,7 @@ struct MissionView: View {
     //in order to make work big button and pedometer
     @State private var progress: CGFloat = 0.0
     @ObservedObject var pedometerManager = PedometerManager()
+    @StateObject private var healthKitManager = HealthKitManager()
 
     
     var body: some View {
@@ -120,8 +121,36 @@ struct MissionView: View {
                             .font(.title3)
                         .fontWeight(.semibold)
                     }
+                    VStack {
+                        Text("Calories")
+                            .font(.title3)
+                        .fontWeight(.semibold)
+                        
+                        Text("\(healthKitManager.caloriesBurned, specifier: "%.2f")")
+                            .font(.title3)
+                        .fontWeight(.semibold)
+                    
+                    }
                     
                 }.padding(.all)
+                //MARK: - Timer
+                Spacer()
+                VStack {
+                    Text("Time")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                    
+                    HStack{
+                        StopwatchUnit(timeUnit: hours, timeUnitText: "HR")
+                        Text(":")
+                            .font(.system(size: 25))
+                        StopwatchUnit(timeUnit: minutes, timeUnitText: "MIN")
+                        Text(":")
+                            .font(.system(size: 25))
+                        StopwatchUnit(timeUnit: seconds, timeUnitText: "SEC")
+                    }
+                }
+                Spacer()
                 //MARK: - BIG BUTTON
                 VStack(spacing: 20) {
                     HStack(spacing: 20) {
@@ -226,6 +255,7 @@ struct MissionView: View {
                 }
             } .onAppear {
                 pedometerManager.startPedometerUpdates()
+                healthKitManager.requestAuthorization()
             }
         }
         .navigationBarBackButtonHidden()
