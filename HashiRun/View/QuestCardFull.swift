@@ -59,7 +59,7 @@ struct QuestCardFull: View {
                                     NavigationLink(destination: MissionView(), isActive: $isLinkActive) {
                                         EmptyView()
                                     }
-                                        .id(UUID(
+                                        .id(UUID())
                                         //.hidden()
                                 )
                         
@@ -67,12 +67,12 @@ struct QuestCardFull: View {
                     .foregroundColor(.white) // Ensure the text color is white if needed
                     .disabled(isClicked)
                     
-                    
+                                            
                 }
                 
                 
                 
-            }
+                                            }
             
         }
         
