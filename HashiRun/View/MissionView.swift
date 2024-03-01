@@ -47,7 +47,10 @@ struct MissionView: View {
     /// Increase progressTime each second
     @State private var timer: Timer?
     
+    //in order to make work big button and pedometer
     @State private var progress: CGFloat = 0.0
+    @ObservedObject var pedometerManager = PedometerManager()
+
     
     var body: some View {
         NavigationStack {
@@ -71,55 +74,56 @@ struct MissionView: View {
             .fullScreenCover(isPresented: $isFullScreenMapPresented) {
                 FullMapView()
             }
-            
+            //MARK: - Grid Session Recap
             VStack (spacing: 20) {
-                Spacer()
-                ZStack {
-                    RoundedRectangle(cornerRadius: 25.0)
-                        .fill(Color.gray)
-                        .opacity(0.1)
-                        .frame(width: 300, height: 250)
-                        .padding()
-                }
-                
-                Spacer()
-                
-                VStack(spacing: 20) {
-                    HStack(spacing: 20) {
-                        ZStack {
-                            VStack {
-                                Text("Time")
-                                //.padding(1)
-                                    .font(.title3)
-                                    .fontWeight(.semibold)
-                                HStack(spacing: 5) {
-                                    StopwatchUnit(timeUnit: hours, timeUnitText: "HR")
-                                    Text(":")
-                                        .font(.system(size: 25))
-                                    StopwatchUnit(timeUnit: minutes, timeUnitText: "MIN")
-                                    Text(":")
-                                        .font(.system(size: 25))
-                                    StopwatchUnit(timeUnit: seconds, timeUnitText: "SEC")
-                                }
-                            }
-                            RoundedRectangle(cornerRadius: 25.0)
-                                .fill(Color.gray)
-                                .opacity(0.4)
-                                .frame(width: 170, height: 100)
-                        }
+                LazyVGrid(columns: Array(repeating: GridItem(), count: 2), spacing: 100) {
+                    VStack {
+                        Text("Time")
+                            .font(.title3)
+                            .fontWeight(.semibold)
                         
-                        RoundedRectangle(cornerRadius: 25.0)
-                            .fill(Color.gray)
-                            .opacity(0.4)
-                            .frame(width: 170, height: 100)
-                            .overlay(
-                                VStack {
-                                    Text("Distance")
-                                        .font(.title3)
-                                        .fontWeight(.semibold)
-                                }
-                            )
+                        HStack{
+                            StopwatchUnit(timeUnit: hours, timeUnitText: "HR")
+                            Text(":")
+                                .font(.system(size: 25))
+                            StopwatchUnit(timeUnit: minutes, timeUnitText: "MIN")
+                            Text(":")
+                                .font(.system(size: 25))
+                            StopwatchUnit(timeUnit: seconds, timeUnitText: "SEC")
+                        }
                     }
+                    
+                    VStack {
+                        Text("Steps")
+                            .font(.title3)
+                        .fontWeight(.semibold)
+                        
+                        Text("\(pedometerManager.steps)")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                    }
+                    VStack {
+                        Text("Distance")
+                            .font(.title3)
+                        .fontWeight(.semibold)
+                        
+                        Text("\(pedometerManager.distanceInKilometers, specifier: "%.2f") km")
+                            .font(.title3)
+                        .fontWeight(.semibold)
+                    }
+                    VStack {
+                        Text("Pace")
+                            .font(.title3)
+                        .fontWeight(.semibold)
+                        
+                        Text("\(pedometerManager.paceInMinutesPerKilometer, specifier: "%.2f") min/km")
+                            .font(.title3)
+                        .fontWeight(.semibold)
+                    }
+                    
+                }.padding(.all)
+                //MARK: - BIG BUTTON
+                VStack(spacing: 20) {
                     HStack(spacing: 20) {
                         ZStack {
                             
@@ -219,9 +223,9 @@ struct MissionView: View {
                             )
                         }
                     }*/
-                    
-                    Spacer()
                 }
+            } .onAppear {
+                pedometerManager.startPedometerUpdates()
             }
         }
         .navigationBarBackButtonHidden()
