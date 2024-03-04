@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct HomePage: View {
-    var missions: [String] = ["Explore the castle","Escape in the forest","Go to talk to the man in the seaport","Find the master sword"]
+    var missions: [String] = ["Explore the castle","Escape the forest","Talk to the seaman","Find the master sword"]
     @State var missionComplete:Int = 0
     @State var isClicked: [Bool]
     
@@ -19,6 +19,7 @@ struct HomePage: View {
     
     @Environment(\.modelContext) private var context
     @Query private var skillValues: [Skill]
+    @Query private var training: [TrainingSession]
     
     //Variabl to handle the charater window
     let images = ["bg", "bg1", "bg2"]
@@ -33,38 +34,50 @@ struct HomePage: View {
     var body: some View {
         
         NavigationStack{
-            ZStack{
-                
-                LinearGradient(gradient: Gradient(colors: [Color("bg"),Color("bg2"),Color("bg"),Color("bg2")]), startPoint: .topLeading, endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
+            ZStack {
+                /*
+                 LinearGradient(gradient: Gradient(colors: [Color("bg"),Color("bg2"),Color("bg"),Color("bg2")]), startPoint: .topLeading, endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
+                 */
+                Color("background").edgesIgnoringSafeArea(.all)
                 
                 ScrollView{
                     
                     VStack{
-                        VStack(alignment:.leading){
+                        VStack(){
                             NavigationLink(destination: CharacterView()) {
                                 ZStack {
                                     
-                                    Image(randomImageName)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 280, height: 280).clipShape(RoundedRectangle(cornerRadius: 40))
-                                        .onAppear {
-                                            let randomIndex = Int.random(in: 0..<3)
-                                            randomImageName = images[randomIndex]
-                                        }
+                                    /*
+                                     Image(randomImageName)
+                                     .resizable()
+                                     .aspectRatio(contentMode: .fit)
+                                     .frame(width: 280, height: 280).clipShape(RoundedRectangle(cornerRadius: 40))
+                                     .onAppear {
+                                     let randomIndex = Int.random(in: 0..<3)
+                                     randomImageName = images[randomIndex]
+                                     }
+                                     */
                                     
+                                    Circle()
+                                        .foregroundColor(Color.gray)
+                                        .frame(width:280)
+                                        .opacity(0.5)
                                     
                                     Image(animationImages[currentIndex])
                                         .resizable()
                                         .frame(width: 175, height: 175)
-                                        .scaleEffect(0.5)
+                                    //.scaleEffect(0.5)
                                         .onReceive(timer) { _ in
                                             currentIndex = (currentIndex + 1) % animationImages.count
-                                        }.padding(.top, 100)
+                                        }//.padding(.top, 100)
                                     
-    
+                                    
                                 }
+                                
+                                
                             }
+                            Text("Player class lvl ")
+                                .font(Font.custom("Press Start", size: 20))
                         }
                         CustomDivider(textToDisplay: "Boss").padding(.vertical)
                         
@@ -74,17 +87,18 @@ struct HomePage: View {
                         } label: {
                             ZStack{
                                 Text("Challenge The Boss")
-                                 .foregroundColor(.white) // Text color
-                                 .padding(.vertical, 15) // Vertical padding
-                                 .padding(.horizontal, 30) // Horizontal padding
-                                 .frame(width: 300, height:80) // Set explicit frame size for the button
-                                 .background(Color.red) // Button background color
-                                 .cornerRadius(20) // Rounded corners
-                                 
+                                    .font(Font.custom("Press Start", size: 20))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.black) // Text color
+                                    .padding(.vertical, 15) // Vertical padding
+                                    .padding(.horizontal, 30) // Horizontal padding
+                                    .frame(width: 300, height:80) // Set explicit frame size for the button
+                                    .background(Color.red) // Button background color
+                                    .cornerRadius(20) // Rounded corners
+                                
                             }
                             
                         }
-                        .foregroundColor(.white) // Ensure the text color is white if needed
                         .shadow(color: .black, radius: 10, x: 0, y: 5) // Add shadow here
                         .padding()
                         
@@ -97,13 +111,16 @@ struct HomePage: View {
                                     RoundedRectangle(cornerRadius: 25.0)
                                         .foregroundStyle(.clear)
                                         .background(isClicked[index] ? Image("buttonBg").opacity(0.2) :
-                                                        Image("buttonBg").opacity(1.0))
+                                                        Image("buttonBg").opacity(1))
                                     Text(missions[index])
+                                        .font(Font.custom("Press Start", size: 15))
+                                        .foregroundStyle(.black)
+                                    
                                 }
                             }
                             .foregroundColor(.white) // Ensure the text color is white if needed
                             .disabled(isClicked[index]) // Disable the button if it has been clicked
-                            .shadow(color: .black, radius: 10, x: 0, y: 5) // Add shadow here
+                            //.shadow(color: .black, radius: 10, x: 0, y: 5) // Add shadow here
                             .padding()
                         }.padding()
                         
@@ -112,9 +129,15 @@ struct HomePage: View {
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         HStack {
-                            NavigationLink(destination:ContentView()){
-                                Text("History")
-                                    .font(Font.custom("Press Start", size: 15))
+                            NavigationLink (destination: HistoryView()) {
+                                /*
+                                 Text("History")
+                                 .font(Font.custom("Press Start", size: 15))
+                                 */
+                                Image("journal")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50, height: 50)
                             }
                         }
                     }
@@ -123,17 +146,19 @@ struct HomePage: View {
                 if skillValues.isEmpty{
                     self.create()
                 }
+                
             }
             
         }
         .navigationBarBackButtonHidden()
     }
     
-   
+    
     private func create(){
         let skillsV = Skill(skillValue: [0,0,0])
         context.insert(skillsV)
     }
+    
     
     //Temporary boss challenge
     private func battle(){

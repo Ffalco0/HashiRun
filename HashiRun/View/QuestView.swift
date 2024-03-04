@@ -6,6 +6,10 @@
 //
 
 import SwiftUI
+import SwiftData
+
+
+
 
 struct Quest: Identifiable {
     let id = UUID()
@@ -23,45 +27,36 @@ let quests: [Quest] = [
     Quest(name: "Compassionate Runner", imageName: "key", description: "Trail Blazer")
 ]
 
-struct ContentView: View {
+struct HistoryView: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
               Color("background").edgesIgnoringSafeArea(.all)
                 ScrollView {
                     VStack {
                         // Quests
                         VStack(alignment: .leading, spacing: 15) {
+                           
                             ForEach(quests) { quest in
                                 NavigationLink(destination: QuestDetailView(quest: quest)) {
                                     HStack(alignment: .center, spacing: 10) {
-                                        // Image with Circle background
-                                        ZStack{
-                                            Circle()
-                                                .foregroundColor(Color.gray)
-                                                .opacity(0.5)
-                                            Image(quest.imageName)
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 70, height: 70)
-                                        }
-                                        
-                                        Spacer()
                                         
                                         // Quest name
                                         ZStack(alignment: .center){
                                             RoundedRectangle(cornerRadius: 50)
                                                 .foregroundColor(Color.gray)
-                                                .frame(width:280)
+                                                .frame(width:320)
                                                 .opacity(0.5)
                                             VStack(alignment: .leading) {
                                                 Text(quest.name)
-                                                    .font(.custom("prstart.tiff", size: 20))
+                                                    .font(Font.custom("Press Start", size: 15))
+
                                                     .fontWeight(.bold)
                                                     .foregroundColor(Color.white)
 
                                                 Text(quest.description)
-                                                    .font(.custom("prstart.tiff", size: 15))
+                                                    .font(Font.custom("Press Start", size: 15))
+
                                                     .fontWeight(.semibold)
                                                     .foregroundColor(Color.white)
                                             }
@@ -69,8 +64,8 @@ struct ContentView: View {
                                     }
                                     .padding() // Add padding to each item if needed
                                 }
-                                .navigationBarTitle("Quests", displayMode: .automatic)
-                                .navigationBarTitleDisplayMode(.automatic)
+                                .navigationBarTitle("History")
+                                
                                 
                             }
                         }
@@ -80,11 +75,13 @@ struct ContentView: View {
             }
         }.environment(\.colorScheme, .dark)
     }
+ 
 }
 
 struct QuestDetailView: View {
     var quest: Quest
-    
+    @Environment(\.modelContext) private var context
+    @Query private var training: [TrainingSession]
     var body: some View {
             ZStack {
                 Color("background").edgesIgnoringSafeArea(.all)
@@ -113,15 +110,31 @@ struct QuestDetailView: View {
                         .foregroundColor(Color.white)
                         .lineLimit(nil)
                         .multilineTextAlignment(.leading)
+                    
+                    
+                    VStack(alignment: .center){
+                        ForEach(0..<training.count, id: \.self) { index in
+                            Text("Steps: \(training[index].steps)")
+                            Text("Distance: \(training[index].distance, specifier: "%.2f") km")
+                            Text("Pace: \(training[index].pace, specifier: "%.2f") min/km")
+                            Text("Date: \(formatDate(training[index].date))")
+                        }.padding()
+                    }
                 }
                 .padding()
             }
+    }
+    func formatDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .short
+        return formatter.string(from: date)
     }
 }
 
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        HistoryView()
     }
 }
