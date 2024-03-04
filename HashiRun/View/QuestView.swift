@@ -32,11 +32,13 @@ struct HistoryView: View {
         NavigationStack {
             ZStack {
               Color("background").edgesIgnoringSafeArea(.all)
+                
                 ScrollView {
                     VStack {
                         // Quests
                         VStack(alignment: .leading, spacing: 15) {
                            
+                            
                             ForEach(quests) { quest in
                                 NavigationLink(destination: QuestDetailView(quest: quest)) {
                                     HStack(alignment: .center, spacing: 10) {

@@ -158,6 +158,7 @@ struct HomePage: View {
         let skillsV = Skill(skillValue: [0,0,0])
         context.insert(skillsV)
     }
+   
     
     
     //Temporary boss challenge
