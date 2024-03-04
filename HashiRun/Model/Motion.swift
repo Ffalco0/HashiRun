@@ -8,6 +8,7 @@
 import Foundation
 import CoreMotion
 
+
 class PedometerManager: ObservableObject {
     private let pedometer = CMPedometer()
     @Published var steps = 0

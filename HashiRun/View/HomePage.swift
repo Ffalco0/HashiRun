@@ -19,6 +19,7 @@ struct HomePage: View {
     
     @Environment(\.modelContext) private var context
     @Query private var skillValues: [Skill]
+    @Query private var training: [TrainingSession]
     
     //Variabl to handle the charater window
     let images = ["bg", "bg1", "bg2"]
@@ -123,6 +124,7 @@ struct HomePage: View {
                 if skillValues.isEmpty{
                     self.create()
                 }
+                
             }
             
         }
@@ -134,6 +136,7 @@ struct HomePage: View {
         let skillsV = Skill(skillValue: [0,0,0])
         context.insert(skillsV)
     }
+   
     
     //Temporary boss challenge
     private func battle(){

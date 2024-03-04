@@ -6,6 +6,10 @@
 //
 
 import SwiftUI
+import SwiftData
+
+
+
 
 struct Quest: Identifiable {
     let id = UUID()
@@ -28,10 +32,13 @@ struct ContentView: View {
         NavigationView {
             ZStack {
               Color("background").edgesIgnoringSafeArea(.all)
+                
                 ScrollView {
                     VStack {
                         // Quests
                         VStack(alignment: .leading, spacing: 15) {
+                           
+                            
                             ForEach(quests) { quest in
                                 NavigationLink(destination: QuestDetailView(quest: quest)) {
                                     HStack(alignment: .center, spacing: 10) {
@@ -80,11 +87,13 @@ struct ContentView: View {
             }
         }.environment(\.colorScheme, .dark)
     }
+ 
 }
 
 struct QuestDetailView: View {
     var quest: Quest
-    
+    @Environment(\.modelContext) private var context
+    @Query private var training: [TrainingSession]
     var body: some View {
             ZStack {
                 Color("background").edgesIgnoringSafeArea(.all)
@@ -113,9 +122,25 @@ struct QuestDetailView: View {
                         .foregroundColor(Color.white)
                         .lineLimit(nil)
                         .multilineTextAlignment(.leading)
+                    
+                    
+                    VStack(alignment: .center){
+                        ForEach(0..<training.count, id: \.self) { index in
+                            Text("Steps: \(training[index].steps)")
+                            Text("Distance: \(training[index].distance, specifier: "%.2f") km")
+                            Text("Pace: \(training[index].pace, specifier: "%.2f") min/km")
+                            Text("Date: \(formatDate(training[index].date))")
+                        }.padding()
+                    }
                 }
                 .padding()
             }
+    }
+    func formatDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .short
+        return formatter.string(from: date)
     }
 }
 

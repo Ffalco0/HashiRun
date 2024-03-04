@@ -8,6 +8,7 @@
 import SwiftUI
 import MapKit
 import CoreLocation
+import SwiftData
 
 struct MissionView: View {
     
@@ -54,10 +55,11 @@ struct MissionView: View {
     @State private var progress: CGFloat = 0.0
     // Timer to control the animation progress
     @State private var timerButton: Timer?
-    
     @ObservedObject var pedometerManager = PedometerManager()
     @StateObject private var healthKitManager = HealthKitManager()
     
+    @Query private var training: [TrainingSession]
+    @Environment(\.modelContext) private var context
     
     var body: some View {
         NavigationStack {
@@ -206,6 +208,7 @@ struct MissionView: View {
                             isRunning = false
                             progressTime = 0
                             self.backToHome = true // Trigger navigation or state change
+                            self.saveTrainingData()
                         })
                     )
                 }
@@ -213,17 +216,27 @@ struct MissionView: View {
             }.onAppear {
                 pedometerManager.startPedometerUpdates()
                 healthKitManager.requestAuthorization()
+                self.addTraining()
+                print(training.count)
             }
             .onDisappear{
                 healthKitManager.stopQueryingForCaloriesBurned()
             }
         }
-        .navigationBarBackButtonHidden()
+    }
+    
+    func addTraining(){
+        let training = TrainingSession(steps: 0, distance: 0.0, pace: 0.0, date: Date())
+        context.insert(training)
+    }
+    
+    func saveTrainingData(){
+        training[0].steps = pedometerManager.steps
+        training[0].distance = pedometerManager.distanceInKilometers
+        training[0].pace = pedometerManager.paceInMinutesPerKilometer
+        training[0].date = Date()
     }
 }
 
 
-#Preview {
-    MissionView()
-}
 
