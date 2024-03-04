@@ -84,21 +84,6 @@ struct MissionView: View {
             //MARK: - Grid Session Recap
             VStack (spacing: 20) {
                 LazyVGrid(columns: Array(repeating: GridItem(), count: 2), spacing: 100) {
-                    VStack {
-                        Text("Time")
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                        
-                        HStack{
-                            StopwatchUnit(timeUnit: hours, timeUnitText: "HR")
-                            Text(":")
-                                .font(.system(size: 25))
-                            StopwatchUnit(timeUnit: minutes, timeUnitText: "MIN")
-                            Text(":")
-                                .font(.system(size: 25))
-                            StopwatchUnit(timeUnit: seconds, timeUnitText: "SEC")
-                        }
-                    }
                     
                     VStack {
                         Text("Steps")
