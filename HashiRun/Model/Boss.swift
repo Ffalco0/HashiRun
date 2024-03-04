@@ -7,6 +7,10 @@
 
 import Foundation
 
-struct Boss{
+class Boss{
+    var values:[Int]
     
+    init(values: [Int]) {
+        self.values = values
+    }
 }

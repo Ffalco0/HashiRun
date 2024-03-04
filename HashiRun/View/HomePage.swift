@@ -27,6 +27,9 @@ struct HomePage: View {
     let timer = Timer.publish(every: 1/5, on: .main, in: .common).autoconnect()
     @State var currentIndex = 0
     
+    //Boss challenge
+    var boss = Boss(values: [0,-1,-5])
+    
     var body: some View {
         
         NavigationStack{
@@ -59,31 +62,25 @@ struct HomePage: View {
                                             currentIndex = (currentIndex + 1) % animationImages.count
                                         }.padding(.top, 100)
                                     
-                                    //Image("human_base").resizable().frame(width: //110, height: 110)
-                                    // .padding(.top,150)
+    
                                 }
                             }
                         }
                         CustomDivider(textToDisplay: "Boss").padding(.vertical)
                         
                         Button {
-                            print("Challenge the boss")
+                            self.battle()
+                            
                         } label: {
                             ZStack{
-                                Image("buttonBg")
-                                    .resizable()
-                                    .scaledToFit()
-                                
                                 Text("Challenge The Boss")
-                                
-                                /*
                                  .foregroundColor(.white) // Text color
                                  .padding(.vertical, 15) // Vertical padding
                                  .padding(.horizontal, 30) // Horizontal padding
                                  .frame(width: 300, height:80) // Set explicit frame size for the button
                                  .background(Color.red) // Button background color
                                  .cornerRadius(20) // Rounded corners
-                                 */
+                                 
                             }
                             
                         }
@@ -132,9 +129,31 @@ struct HomePage: View {
         .navigationBarBackButtonHidden()
     }
     
+   
     private func create(){
         let skillsV = Skill(skillValue: [0,0,0])
         context.insert(skillsV)
+    }
+    
+    //Temporary boss challenge
+    private func battle(){
+        var result:Int = 0
+        for index in 0..<3 {
+            result += challengeBoss(index: index)
+        }
+        if result > 1{
+            print("You win the boss challenge")
+        }else{
+            print("You lose the boss challenge")
+        }
+    }
+    
+    private func challengeBoss(index: Int) -> Int{
+        var points:Int = 0
+        if skillValues[skillValues.startIndex].skillValue[index] > boss.values[index] {
+            points += 1
+        }
+        return points
     }
     
     

@@ -17,11 +17,11 @@ struct MissionView: View {
     )
     
     var regionBinding: Binding<MKCoordinateRegion> {
-            .init(
-                get: { region },
-                set: { newValue in DispatchQueue.main.async { region = newValue } }
-            )
-        }
+        .init(
+            get: { region },
+            set: { newValue in DispatchQueue.main.async { region = newValue } }
+        )
+    }
     
     let locationManager = CLLocationManager()
     
@@ -48,10 +48,16 @@ struct MissionView: View {
     @State private var timer: Timer?
     
     //in order to make work big button and pedometer
+    // Tracks whether the button is being pressed
+    @GestureState private var isPressed = false
+    // Controls the progress of the animation
     @State private var progress: CGFloat = 0.0
+    // Timer to control the animation progress
+    @State private var timerButton: Timer?
+    
     @ObservedObject var pedometerManager = PedometerManager()
     @StateObject private var healthKitManager = HealthKitManager()
-
+    
     
     var body: some View {
         NavigationStack {
@@ -82,7 +88,7 @@ struct MissionView: View {
                     VStack {
                         Text("Steps")
                             .font(.title3)
-                        .fontWeight(.semibold)
+                            .fontWeight(.semibold)
                         
                         Text("\(pedometerManager.steps)")
                             .font(.title3)
@@ -91,30 +97,30 @@ struct MissionView: View {
                     VStack {
                         Text("Distance")
                             .font(.title3)
-                        .fontWeight(.semibold)
+                            .fontWeight(.semibold)
                         
                         Text("\(pedometerManager.distanceInKilometers, specifier: "%.2f") km")
                             .font(.title3)
-                        .fontWeight(.semibold)
+                            .fontWeight(.semibold)
                     }
                     VStack {
                         Text("Pace")
                             .font(.title3)
-                        .fontWeight(.semibold)
+                            .fontWeight(.semibold)
                         
                         Text("\(pedometerManager.paceInMinutesPerKilometer, specifier: "%.2f") min/km")
                             .font(.title3)
-                        .fontWeight(.semibold)
+                            .fontWeight(.semibold)
                     }
                     VStack {
                         Text("Calories")
                             .font(.title3)
-                        .fontWeight(.semibold)
+                            .fontWeight(.semibold)
                         
-                        Text("\(healthKitManager.caloriesBurned, specifier: "%.2f")")
+                        Text("\((healthKitManager.caloriesBurned ), specifier: "%.2f")")
                             .font(.title3)
-                        .fontWeight(.semibold)
-                    
+                            .fontWeight(.semibold)
+                        
                     }
                     
                 }.padding(.all)
@@ -137,110 +143,79 @@ struct MissionView: View {
                 }
                 Spacer()
                 //MARK: - BIG BUTTON
-                VStack(spacing: 20) {
-                    HStack(spacing: 20) {
-                        ZStack {
-                            
-                            GeometryReader { geometry in
-                                RoundedRectangle(cornerRadius: 25.0)
-                                    .fill(LinearGradient(gradient: Gradient(colors: [.gray]), startPoint: .leading, endPoint: .trailing))
-                                    .frame(width: geometry.size.width * progress, height: geometry.size.height)
-                                    .animation(.linear(duration: 3), value: progress)
-                            }
-                            .mask(
-                                RoundedRectangle(cornerRadius: 25.0)
-                                    .frame(width: 350, height: 100)
-                            )
-
-                            
-                            RoundedRectangle(cornerRadius: 25.0)
-                                .fill(Color.gray)
-                                .frame(width: 350, height: 100)
-                            
-                                .onTapGesture {
-                                    if isRunning {
-                                        timer?.invalidate()
-                                    } else {
-                                        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
-                                            progressTime += 1
-                                        })
-                                    }
-                                    isRunning.toggle()
-                                }
-                                .gesture(
-                                    LongPressGesture(minimumDuration: 3.0)
-                                      
-                                        .onEnded { _ in
-                                            showAlert = true
-                                        }
-                                )
-                            
-                           
-                            
-                            Text(isRunning ? "Pause/Stop" : "Play/Stop")
-                                .font(.title)
-                        }
-                    }
-                    .alert(isPresented: $showAlert) {
-                        Alert(
-                            title: Text("Are you sure?"),
-                            message: Text("Stopping the timer will reset the progress. Do you want to continue?"),
-                            primaryButton: .cancel(),
-                            secondaryButton: .destructive(Text("Stop"), action: {
-                                timer?.invalidate()
-                                isRunning = false
-                                progressTime = 0
-                                self.backToHome = true // Trigger navigation or state change
-                            })
-                        )
-                    }
+                ZStack(alignment: .leading) {
+                    // The progress bar that will animate based on the press duration
+                    Rectangle()
+                        .foregroundColor(.gray.opacity(0.2))
+                        .frame(height: 100)
+                        .scaleEffect(x: progress, y: 1, anchor: .leading)
+                        .animation(.linear, value: progress)
                     
-                    /*
-                    HStack(spacing: 20) {
-                        Button(action: {
-                            if isRunning {
-                                timer?.invalidate()
-                            } else {
-                                timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
-                                    progressTime += 1
-                                })
-                            }
-                            isRunning.toggle()
-                        }) {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 25.0)
-                                    .fill(Color.gray)
-                                    .opacity(0.4)
-                                    .frame(width: 350, height: 100)
-                                
-                                Text(isRunning ? "Pause/Stop" : "Play/Stop")
-                                    .font(.title)
-                                    .foregroundColor(.black)
-                            }
-                        }
-                        .gesture(LongPressGesture(minimumDuration: 3.0)
-                            .onEnded { _ in
-                                showAlert = true
-                                print(showAlert)
-                        })
-                        .alert(isPresented: $showAlert) {
-                            Alert(
-                                title: Text("Are you sure?"),
-                                message: Text("Stopping the timer will reset the progress. Do you want to continue?"),
-                                primaryButton: .cancel(),
-                                secondaryButton: .destructive(Text("Stop"), action: {
-                                    timer?.invalidate()
-                                    isRunning = false
-                                    progressTime = 0
-                                    self.backToHome = true
-                                })
-                            )
-                        }
-                    }*/
+                    // Button Label
+                    Text(isRunning ? "Pause/Stop" : "Play/Stop")
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-            } .onAppear {
+                .frame(width: 350, height: 100)
+                .background(Color.gray.opacity(0.4))
+                .cornerRadius(25)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    if isRunning {
+                        timer?.invalidate()
+                    } else {
+                        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+                            progressTime += 1
+                        })
+                    }
+                    isRunning.toggle()
+                }
+                .gesture(
+                    // A combined gesture to track pressing and dragging (with zero distance to act like a long press)
+                    DragGesture(minimumDistance: 0)
+                        .updating($isPressed) { _, isPressed, _ in
+                            isPressed = true // Indicate that the button is being pressed
+                        }
+                        .onChanged { _ in
+                            if timerButton == nil {
+                                // Initialize and start the timer when the gesture begins
+                                progress = 0.0 // Reset progress
+                                timerButton = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
+                                    // Increment the progress
+                                    if progress < 1 {
+                                        progress += 0.01
+                                    }
+                                }
+                            }
+                        }
+                        .onEnded { _ in
+                            // Invalidate and clear the timer when the gesture ends
+                            showAlert.toggle()
+                            timerButton?.invalidate()
+                            timerButton = nil
+                            progress = 0.0 // Reset the progress
+                        }
+                )
+                .alert(isPresented: $showAlert) {
+                    Alert(
+                        title: Text("Are you sure?"),
+                        message: Text("Stopping the timer will reset the progress. Do you want to continue?"),
+                        primaryButton: .cancel(),
+                        secondaryButton: .destructive(Text("Stop"), action: {
+                            timer?.invalidate()
+                            isRunning = false
+                            progressTime = 0
+                            self.backToHome = true // Trigger navigation or state change
+                        })
+                    )
+                }
+                
+            }.onAppear {
                 pedometerManager.startPedometerUpdates()
                 healthKitManager.requestAuthorization()
+            }
+            .onDisappear{
+                healthKitManager.stopQueryingForCaloriesBurned()
             }
         }
         .navigationBarBackButtonHidden()

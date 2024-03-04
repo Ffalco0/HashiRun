@@ -5,19 +5,19 @@
 //  Created by Fabio Falco on 01/03/24.
 //
 
-import Foundation
 import HealthKit
 
 
 class HealthKitManager: ObservableObject {
     private var healthStore: HKHealthStore?
+    private var activeEnergyQuery: HKAnchoredObjectQuery?
+    private var queryAnchor: HKQueryAnchor?
     @Published var caloriesBurned: Double = 0
     
     init() {
-        if HKHealthStore.isHealthDataAvailable() {
-            healthStore = HKHealthStore()
-        }
+        self.healthStore = HKHealthStore()
     }
+    
     
     func requestAuthorization() {
         guard let healthStore = healthStore else { return }
@@ -27,43 +27,43 @@ class HealthKitManager: ObservableObject {
         
         healthStore.requestAuthorization(toShare: write, read: read) { success, error in
             if success {
-                self.fetchCaloriesBurned()
+                self.startSession()
             } else {
                 print("HealthKit Authorization Failed: \(String(describing: error))")
             }
         }
     }
     
-    func fetchCaloriesBurned() {
+    func startSession() {
+        //self.caloriesBurned = 0 
+        startQueryingForCaloriesBurned()
+    }
+    
+    func startQueryingForCaloriesBurned() {
         guard let healthStore = healthStore,
-              let energyBurnedType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned) else { return }
+              let energyBurnedType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned) else {
+            return
+        }
         
         let now = Date()
-        let startOfDay = Calendar.current.startOfDay(for: now)
-        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: now, options: .strictStartDate)
+        let predicate = HKQuery.predicateForSamples(withStart: now, end: nil, options: .strictStartDate)
         
-        let query = HKStatisticsQuery(quantityType: energyBurnedType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, _ in
+        let query = HKStatisticsQuery(quantityType: energyBurnedType, quantitySamplePredicate: predicate, options: .cumulativeSum) { [weak self] _, result, _ in
             DispatchQueue.main.async {
                 let sum = result?.sumQuantity()?.doubleValue(for: .kilocalorie())
-                self.caloriesBurned = sum ?? 0
+                self?.caloriesBurned = sum ?? 0
             }
         }
         
         healthStore.execute(query)
     }
+    
+    func stopQueryingForCaloriesBurned() {
+        guard let healthStore = healthStore, let query = activeEnergyQuery else { return }
+        healthStore.stop(query)
+        self.activeEnergyQuery = nil
+    }
+
 }
 
-/*
-struct ContentView: View {
-    @StateObject private var healthKitManager = HealthKitManager()
 
-    var body: some View {
-        VStack {
-            Text("Calories Burned: \(healthKitManager.caloriesBurned, specifier: "%.2f")")
-                .padding()
-                .onAppear {
-                    healthKitManager.requestAuthorization()
-                }
-        }
-    }
-}*/
