@@ -25,6 +25,12 @@ struct QuestCardFull: View {
                         .padding()
                         .font(.custom("Press Start", size: 20))
                     
+                    Text("Amidst the ancient walls of the mysterious castle, our brave adventurers discovered secret passages and hidden chambers, unlocking the castle's enigmatic history. As they delved deeper, a glint of gold caught their eye, a long lost treasure concealed for centuries, now gleaming in the heart of the forgotten fortress, awaiting its rediscovery.")
+                        .padding()
+                        .font(.custom("Press Start", size: 18))
+                    Spacer()
+                    Text("Objective : 5 KM")
+                        .font(.custom("Press Start", size: 18))
                     Spacer()
                     NavigationLink(destination: MissionView(distanceToComplete: 5, index: index)) {
                         Text("Start")
