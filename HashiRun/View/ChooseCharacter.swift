@@ -19,20 +19,22 @@ struct ChooseCharacter: View {
             
             HStack {
                 ForEach(0..<characterImages.count, id: \.self) { index in
-                    VStack {
-                        Image(characterImages[index])
-                            .resizable() // Make the image resizable
-                            .scaledToFit() // Keep the image's aspect ratio
-                            .frame(width: 100, height: 100)
-                        
-                        Text(characterClasses[index])
-                            .foregroundStyle(.white)
-                            .font(Font.custom("Press Start", size: 20))
-                            .multilineTextAlignment(.center)
-                    }
-                    .padding()
-                    .onTapGesture {
-                       image = characterImages[index]
+                    NavigationLink(destination: CharacterView()){
+                        VStack {
+                            Image(characterImages[index])
+                                .resizable() // Make the image resizable
+                                .scaledToFit() // Keep the image's aspect ratio
+                                .frame(width: 100, height: 100)
+                            
+                            Text(characterClasses[index])
+                                .foregroundStyle(.white)
+                                .font(Font.custom("Press Start", size: 20))
+                                .multilineTextAlignment(.center)
+                        }
+                        .padding()
+                        .onTapGesture {
+                            image = characterImages[index]
+                        }
                     }
                 }
             }

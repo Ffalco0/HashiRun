@@ -73,6 +73,7 @@ struct MissionView: View {
     var body: some View {
         NavigationStack {
             NavigationLink(destination: HomePage(), isActive: self.$backToHome) { EmptyView() }
+            NavigationLink(destination: ChooseCharacter(), isActive: self.$firstCompletation) { EmptyView() }
             
             Map (
                 coordinateRegion: regionBinding,
@@ -206,7 +207,7 @@ struct MissionView: View {
                             timerButton?.invalidate()
                             timerButton = nil
                             progressButton = 0.0 // Reset the progress
-                            checkProgressCharacter()
+                            
                         }
                 )
                 .alert(isPresented: $showAlert) {
@@ -214,20 +215,7 @@ struct MissionView: View {
                         title: Text("Are you sure?"),
                         message: Text("Stopping the timer will reset the progress. Do you want to continue?"),
                         primaryButton: .cancel(),
-                        secondaryButton: .destructive(Text("Stop"), action: {
-                            timer?.invalidate()
-                            isRunning = false
-                            progressTime = 0
-                            self.backToHome = true // Trigger navigation or state change
-                            //Add the check to mark if the user complete the quest or not
-                            if pedometerManager.distanceInKilometers == distanceToComplete{
-                                self.saveTrainingData(inedx: training.count)
-                            }
-                            if !firstCompletation{
-                                ChooseCharacter()
-                                firstCompletation = true
-                            }
-                        })
+                        secondaryButton: .destructive(Text("Stop"), action: handleStop)
                     )
                 }
                 
@@ -262,6 +250,25 @@ struct MissionView: View {
             skillPoint += 1
         }
     }
+    
+    private func handleStop() {
+          // Invalidate the timer
+          timer?.invalidate()
+          isRunning = false
+          progressTime = 0
+          firstCompletation = true
+          // Check if the user has completed the quest
+          if pedometerManager.distanceInKilometers == distanceToComplete {
+              // Handle quest completion
+              checkProgressCharacter()
+              saveTrainingData(inedx: training.count)
+          }
+          
+          // Check if this is the first completion
+          if firstCompletation {
+              backToHome = true
+          }
+      }
 }
 
 
