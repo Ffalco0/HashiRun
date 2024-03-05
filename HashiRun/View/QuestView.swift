@@ -24,9 +24,9 @@ let quests: [Quest] = [
     Quest(name: "Compassionate Runner", imageName: "key", description: "Trail Blazer")
 ]
 
-struct ContentView: View {
+struct HistoryView: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
               Color("background").edgesIgnoringSafeArea(.all)
                 
@@ -39,33 +39,23 @@ struct ContentView: View {
                             ForEach(quests) { quest in
                                 NavigationLink(destination: QuestDetailView(quest: quest)) {
                                     HStack(alignment: .center, spacing: 10) {
-                                        // Image with Circle background
-                                        ZStack{
-                                            Circle()
-                                                .foregroundColor(Color.gray)
-                                                .opacity(0.5)
-                                            Image(quest.imageName)
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 70, height: 70)
-                                        }
-                                        
-                                        Spacer()
                                         
                                         // Quest name
                                         ZStack(alignment: .center){
                                             RoundedRectangle(cornerRadius: 50)
                                                 .foregroundColor(Color.gray)
-                                                .frame(width:280)
+                                                .frame(width:320)
                                                 .opacity(0.5)
                                             VStack(alignment: .leading) {
                                                 Text(quest.name)
-                                                    .font(.custom("prstart.tiff", size: 20))
+                                                    .font(Font.custom("Press Start", size: 15))
+
                                                     .fontWeight(.bold)
                                                     .foregroundColor(Color.white)
 
                                                 Text(quest.description)
-                                                    .font(.custom("prstart.tiff", size: 15))
+                                                    .font(Font.custom("Press Start", size: 15))
+
                                                     .fontWeight(.semibold)
                                                     .foregroundColor(Color.white)
                                             }
@@ -73,8 +63,8 @@ struct ContentView: View {
                                     }
                                     .padding() // Add padding to each item if needed
                                 }
-                                .navigationBarTitle("Quests", displayMode: .automatic)
-                                .navigationBarTitleDisplayMode(.automatic)
+                                .navigationBarTitle("History")
+                                
                                 
                             }
                         }
@@ -144,6 +134,6 @@ struct QuestDetailView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        HistoryView()
     }
 }
