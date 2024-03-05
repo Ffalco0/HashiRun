@@ -28,6 +28,10 @@ struct HomePage: View {
     let timer = Timer.publish(every: 1/5, on: .main, in: .common).autoconnect()
     @State var currentIndex = 0
     
+    @State private var showingBattleResult = false
+    @State private var battleResult = ""
+
+    
     //Boss challenge
     var boss = Boss(values: [0,-1,-5])
     
@@ -82,7 +86,7 @@ struct HomePage: View {
                         CustomDivider(textToDisplay: "Boss").padding(.vertical)
                         
                         Button {
-                            self.battle()
+                            showingBattleResult = true
                             
                         } label: {
                             ZStack{
@@ -144,7 +148,16 @@ struct HomePage: View {
                 }
                 
             }
-            
+            .fullScreenCover(isPresented: $showingBattleResult, onDismiss: {
+                // Questa funzione verrà chiamata quando la fullScreenCover viene chiusa.
+                print("Tornato alla HomePage")
+            }) {
+                // Qui definisci la vista da mostrare nella fullScreenCover
+                BattleResultView(result: self.battle(), onDismiss: {
+                    // Imposta showingBattleResult a false per chiudere la fullScreenCover
+                    self.showingBattleResult = false
+                })
+            }
         }
         .navigationBarBackButtonHidden()
     }
@@ -158,15 +171,15 @@ struct HomePage: View {
     
     
     //Temporary boss challenge
-    private func battle(){
+    private func battle() -> String{
         var result:Int = 0
         for index in 0..<3 {
             result += challengeBoss(index: index)
         }
         if result > 1{
-            print("You win the boss challenge")
+            return "You win the boss challenge"
         }else{
-            print("You lose the boss challenge")
+            return "You lose the boss challenge"
         }
     }
     
@@ -179,4 +192,33 @@ struct HomePage: View {
     }
     
     
+}
+
+struct BattleResultView: View {
+    let result: String
+    var onDismiss: () -> Void
+    
+    var body: some View {
+        ZStack {
+            // Sfondo per la schermata del risultato della battaglia
+            Color.black.opacity(0.5).edgesIgnoringSafeArea(.all)
+            
+            // Visualizzazione del risultato
+            VStack {
+                Spacer()
+                Text(result)
+                    .font(.title)
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color.gray)
+                    .cornerRadius(10)
+                Spacer()
+                Button("OK", action: onDismiss)
+            }
+        }
+        .onTapGesture {
+            // Chiama onDismiss quando si tocca ovunque sulla schermata
+            onDismiss()
+        }
+    }
 }

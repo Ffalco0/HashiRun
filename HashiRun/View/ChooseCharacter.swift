@@ -9,8 +9,10 @@ import SwiftUI
 
 struct ChooseCharacter: View {
     var body: some View {
-        let characterImages = ["human1", "human2", "human3"]
+        let characterImages = ["image 8pg", "ladroliv1 1pg", "magelvl1 1pg"]
         let characterClasses = ["Warrior","Rogue","Mage"]
+        @AppStorage("image", store: UserDefaults(suiteName: "character")) var image: String = "human3"
+        @State var rememberSelection: Int? = nil
         
         ZStack {
             Color("background").edgesIgnoringSafeArea(.all)
@@ -27,7 +29,11 @@ struct ChooseCharacter: View {
                             .foregroundStyle(.white)
                             .font(Font.custom("Press Start", size: 20))
                             .multilineTextAlignment(.center)
-                    }.padding()
+                    }
+                    .padding()
+                    .onTapGesture {
+                       image = characterImages[index]
+                    }
                 }
             }
         }
