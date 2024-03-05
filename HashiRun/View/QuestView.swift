@@ -25,6 +25,8 @@ let quests: [Quest] = [
 ]
 
 struct HistoryView: View {
+    @Environment(\.modelContext) private var context
+    @Query private var training: [TrainingSession]
     var body: some View {
         NavigationStack {
             ZStack {
@@ -34,10 +36,8 @@ struct HistoryView: View {
                     VStack {
                         // Quests
                         VStack(alignment: .leading, spacing: 15) {
-                           
-                            
-                            ForEach(quests) { quest in
-                                NavigationLink(destination: QuestDetailView(quest: quest)) {
+                            ForEach(0..<quests.count, id: \.self) { index in
+                                NavigationLink(destination: QuestDetailView(quest: quests[index],index: index)) {
                                     HStack(alignment: .center, spacing: 10) {
                                         
                                         // Quest name
@@ -47,18 +47,16 @@ struct HistoryView: View {
                                                 .frame(width:320)
                                                 .opacity(0.5)
                                             VStack(alignment: .leading) {
-                                                Text(quest.name)
+                                                Text(quests[index].name)
                                                     .font(Font.custom("Press Start", size: 15))
-
                                                     .fontWeight(.bold)
                                                     .foregroundColor(Color.white)
 
-                                                Text(quest.description)
+                                                Text(quests[index].description)
                                                     .font(Font.custom("Press Start", size: 15))
-
                                                     .fontWeight(.semibold)
                                                     .foregroundColor(Color.white)
-                                            }
+                                            }.padding()
                                         }
                                     }
                                     .padding() // Add padding to each item if needed
@@ -79,6 +77,7 @@ struct HistoryView: View {
 
 struct QuestDetailView: View {
     var quest: Quest
+    var index: Int
     @Environment(\.modelContext) private var context
     @Query private var training: [TrainingSession]
     var body: some View {
@@ -112,12 +111,14 @@ struct QuestDetailView: View {
                     
                     
                     VStack(alignment: .center){
-                        ForEach(0..<training.count, id: \.self) { index in
+                        if index < training.count{
                             Text("Steps: \(training[index].steps)")
                             Text("Distance: \(training[index].distance, specifier: "%.2f") km")
                             Text("Pace: \(training[index].pace, specifier: "%.2f") min/km")
                             Text("Date: \(formatDate(training[index].date))")
-                        }.padding()
+                        }else{
+                            Text("No data recorded for the Beta Version")
+                        }
                     }
                 }
                 .padding()

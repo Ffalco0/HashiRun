@@ -62,6 +62,8 @@ struct MissionView: View {
     @AppStorage("progress", store: UserDefaults(suiteName: "character")) var progress: Double = 0.0
     @AppStorage("level", store: UserDefaults(suiteName: "character")) var level : Int = 1
     @AppStorage("skillpoint", store: UserDefaults(suiteName: "character")) var skillPoint: Int = 0
+    @AppStorage("firstCompletation", store: UserDefaults(suiteName: "character")) var firstCompletation: Bool = false
+    var distanceToComplete: Double
     
     @Query private var training: [TrainingSession]
     @Environment(\.modelContext) private var context
@@ -108,7 +110,7 @@ struct MissionView: View {
                             .font(.title3)
                             .fontWeight(.semibold)
                         
-                        Text("\(pedometerManager.distanceInKilometers, specifier: "%.2f") km")
+                        Text("\(pedometerManager.distanceInKilometers, specifier: "%.2f") km / \(distanceToComplete, specifier: "%.0f")km")
                             .font(.title3)
                             .fontWeight(.semibold)
                     }
@@ -170,6 +172,7 @@ struct MissionView: View {
                 .cornerRadius(25)
                 .contentShape(Rectangle())
                 .onTapGesture {
+                    self.addTraining()
                     if isRunning {
                         timer?.invalidate()
                     } else {
@@ -216,7 +219,14 @@ struct MissionView: View {
                             isRunning = false
                             progressTime = 0
                             self.backToHome = true // Trigger navigation or state change
-                            self.saveTrainingData()
+                            //Add the check to mark if the user complete the quest or not
+                            if pedometerManager.distanceInKilometers == distanceToComplete{
+                                self.saveTrainingData(inedx: training.count)
+                            }
+                            if !firstCompletation{
+                                ChooseCharacter()
+                                firstCompletation = true
+                            }
                         })
                     )
                 }
@@ -224,7 +234,6 @@ struct MissionView: View {
             }.onAppear {
                 pedometerManager.startPedometerUpdates()
                 healthKitManager.requestAuthorization()
-                self.addTraining()
             }
             .onDisappear{
                 healthKitManager.stopQueryingForCaloriesBurned()
@@ -237,11 +246,11 @@ struct MissionView: View {
         context.insert(training)
     }
     
-    func saveTrainingData(){
-        training[0].steps = pedometerManager.steps
-        training[0].distance = pedometerManager.distanceInKilometers
-        training[0].pace = pedometerManager.paceInMinutesPerKilometer
-        training[0].date = Date()
+    func saveTrainingData(inedx:Int){
+        training[index].steps = pedometerManager.steps
+        training[index].distance = pedometerManager.distanceInKilometers
+        training[index].pace = pedometerManager.paceInMinutesPerKilometer
+        training[index].date = Date()
     }
     
     func checkProgressCharacter(){

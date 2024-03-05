@@ -130,10 +130,6 @@ struct HomePage: View {
                     ToolbarItem(placement: .topBarTrailing) {
                         HStack {
                             NavigationLink (destination: HistoryView()) {
-                                /*
-                                 Text("History")
-                                 .font(Font.custom("Press Start", size: 15))
-                                 */
                                 Image("journal")
                                     .resizable()
                                     .scaledToFit()

@@ -26,7 +26,7 @@ struct QuestCardFull: View {
                         .font(.custom("Press Start", size: 20))
                     
                     Spacer()
-                    NavigationLink(destination: MissionView(index: index)) {
+                    NavigationLink(destination: MissionView(distanceToComplete: 5, index: index)) {
                         Text("Start")
                             .foregroundColor(.white) // Text color
                             .padding(.vertical, 15) // Vertical padding
