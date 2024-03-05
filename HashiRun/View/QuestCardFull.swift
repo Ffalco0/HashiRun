@@ -8,15 +8,10 @@
 import SwiftUI
 
 struct QuestCardFull: View {
-    //Character shared Values
-    @AppStorage("progress", store: UserDefaults(suiteName: "character")) var progress: Double = 0.0
-    @AppStorage("level", store: UserDefaults(suiteName: "character")) var level : Int = 1
-    @AppStorage("skillpoint", store: UserDefaults(suiteName: "character")) var skillPoint: Int = 0
+    var index:Int
     
     @Binding var isClicked: Bool
     @Binding var tempComplementation: Int
-    
-    @State private var isLinkActive = false
     
     var title: String
     
@@ -31,51 +26,20 @@ struct QuestCardFull: View {
                         .font(.custom("Press Start", size: 20))
                     
                     Spacer()
-                    //NavigationLink(destination: MissionView(), isActive: $isLinkActive) {
-                        Button (action: {
-                            self.isClicked = true
-                            
-                            tempComplementation += 1
-                            
-                            if progress < 1.0 {
-                                progress += 0.50
-                            }else{
-                                progress = 0.0
-                                level += 1
-                                skillPoint += 1
-                            }
-                            self.isLinkActive = true
-                        })
-                        
-                    {
-                            Text("Start")
-                                .foregroundColor(.white) // Text color
-                                .padding(.vertical, 15) // Vertical padding
-                                .padding(.horizontal, 30) // Horizontal padding
-                                .frame(width: 300, height:80) // Set explicit frame size for the button
-                                .background(isClicked ? Color.green.opacity(0.5) : Color.green.opacity(1.0)) // Button background color
-                                .cornerRadius(20) // Rounded corners
-                                .background(
-                                    NavigationLink(destination: MissionView(), isActive: $isLinkActive) {
-                                        EmptyView()
-                                    }
-                                        .id(UUID())
-                                        //.hidden()
-                                )
-                        
+                    NavigationLink(destination: MissionView(index: index)) {
+                        Text("Start")
+                            .foregroundColor(.white) // Text color
+                            .padding(.vertical, 15) // Vertical padding
+                            .padding(.horizontal, 30) // Horizontal padding
+                            .frame(width: 300, height:80) // Set explicit frame size for the button
+                            .background(Color.green) // Button background color
+                            .cornerRadius(20) // Rounded corners
                     }
+                    .id(UUID())
                     .foregroundColor(.white) // Ensure the text color is white if needed
-                    .disabled(isClicked)
-                    
-                                            
                 }
-                
-                
-                
-                                            }
-            
+            }
         }
-        
     }
 }
 

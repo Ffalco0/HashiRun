@@ -93,7 +93,7 @@ struct HomePage: View {
                         
                         
                         ForEach(0..<missions.count, id: \.self){index in
-                            NavigationLink(destination: QuestCardFull(isClicked: $isClicked[index],tempComplementation: $missionComplete, title: missions[index])) {
+                            NavigationLink(destination: QuestCardFull(index: index,isClicked: $isClicked[index],tempComplementation: $missionComplete, title: missions[index])) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 25.0)
                                         .foregroundStyle(.clear)

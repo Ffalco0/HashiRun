@@ -8,9 +8,6 @@
 import SwiftUI
 import SwiftData
 
-
-
-
 struct Quest: Identifiable {
     let id = UUID()
     let name: String

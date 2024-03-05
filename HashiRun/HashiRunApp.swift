@@ -14,10 +14,9 @@ struct HashiRunApp: App {
     
     init() {
         do{
-            let config1 = ModelConfiguration(for: Skill.self)
-            let config2 = ModelConfiguration(for: TrainingSession.self)
             
             container = try ModelContainer(for: Skill.self, TrainingSession.self)
+            
         }catch{
             fatalError("Failed to configure SwiftData container.")
         }

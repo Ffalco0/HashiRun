@@ -52,14 +52,21 @@ struct MissionView: View {
     // Tracks whether the button is being pressed
     @GestureState private var isPressed = false
     // Controls the progress of the animation
-    @State private var progress: CGFloat = 0.0
+    @State private var progressButton: CGFloat = 0.0
     // Timer to control the animation progress
     @State private var timerButton: Timer?
     @ObservedObject var pedometerManager = PedometerManager()
     @StateObject private var healthKitManager = HealthKitManager()
     
+    //Character shared Values
+    @AppStorage("progress", store: UserDefaults(suiteName: "character")) var progress: Double = 0.0
+    @AppStorage("level", store: UserDefaults(suiteName: "character")) var level : Int = 1
+    @AppStorage("skillpoint", store: UserDefaults(suiteName: "character")) var skillPoint: Int = 0
+    
     @Query private var training: [TrainingSession]
     @Environment(\.modelContext) private var context
+    
+    var index:Int
     
     var body: some View {
         NavigationStack {
@@ -150,8 +157,8 @@ struct MissionView: View {
                     Rectangle()
                         .foregroundColor(.gray.opacity(0.2))
                         .frame(height: 100)
-                        .scaleEffect(x: progress, y: 1, anchor: .leading)
-                        .animation(.linear, value: progress)
+                        .scaleEffect(x: progressButton, y: 1, anchor: .leading)
+                        .animation(.linear, value: progressButton)
                     
                     // Button Label
                     Text(isRunning ? "Pause/Stop" : "Play/Stop")
@@ -181,11 +188,11 @@ struct MissionView: View {
                         .onChanged { _ in
                             if timerButton == nil {
                                 // Initialize and start the timer when the gesture begins
-                                progress = 0.0 // Reset progress
+                                progressButton = 0.0 // Reset progress
                                 timerButton = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
                                     // Increment the progress
-                                    if progress < 1 {
-                                        progress += 0.01
+                                    if progressButton < 1 {
+                                        progressButton += 0.01
                                     }
                                 }
                             }
@@ -195,7 +202,8 @@ struct MissionView: View {
                             showAlert.toggle()
                             timerButton?.invalidate()
                             timerButton = nil
-                            progress = 0.0 // Reset the progress
+                            progressButton = 0.0 // Reset the progress
+                            checkProgressCharacter()
                         }
                 )
                 .alert(isPresented: $showAlert) {
@@ -217,7 +225,6 @@ struct MissionView: View {
                 pedometerManager.startPedometerUpdates()
                 healthKitManager.requestAuthorization()
                 self.addTraining()
-                print(training.count)
             }
             .onDisappear{
                 healthKitManager.stopQueryingForCaloriesBurned()
@@ -235,6 +242,16 @@ struct MissionView: View {
         training[0].distance = pedometerManager.distanceInKilometers
         training[0].pace = pedometerManager.paceInMinutesPerKilometer
         training[0].date = Date()
+    }
+    
+    func checkProgressCharacter(){
+        if progress < 1.0 {
+            progress += 0.50
+        }else{
+            progress = 0.0
+            level += 1
+            skillPoint += 1
+        }
     }
 }
 

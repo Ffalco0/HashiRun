@@ -12,7 +12,7 @@ struct CharacterView: View {
     @AppStorage("progress", store: UserDefaults(suiteName: "character")) var progress: Double = 0.0
     @AppStorage("level", store: UserDefaults(suiteName: "character")) var level : Int = 1
     @AppStorage("skillpoint", store: UserDefaults(suiteName: "character")) var skillPoint: Int = 0
-    @AppStorage("image", store: UserDefaults(suiteName: "character")) var image: String = "wizard"
+    @AppStorage("image", store: UserDefaults(suiteName: "character")) var image: String = "human3"
     private var skills: [String] = ["Strenght", "Dexstry","Wisdom"]
     
     
@@ -31,7 +31,7 @@ struct CharacterView: View {
                         Section {
                             Image(image)
                                 .resizable()
-                                .frame(width: 200.0, height: 250.0)
+                                .frame(width: 200.0, height: 200.0)
                                 .clipShape(.rect)
                             
                             //MARK: - Level section
