@@ -96,18 +96,36 @@ struct QuestDetailView: View {
                     
                     VStack(alignment: .leading, spacing: 20){
                         if index < training.count{
-                            
-                            Text("Steps: \(training[index].steps)")
-                                .font(Font.custom("Press Start", size: 20))
-                            Text("Distance: \(training[index].distance, specifier: "%.2f") km")
-                                .font(Font.custom("Press Start", size: 20))
-                            Text("Pace: \(training[index].pace, specifier: "%.2f") km/min")
-                                .font(Font.custom("Press Start", size: 20))
-                            Text("Date: \(formatDate(training[index].date))")
-                                .font(Font.custom("Press Start", size: 20))
-                        }
-                        
-                        else{
+                            HStack {
+                                Text("Steps:")
+                                    .font(Font.custom("Press Start", size: 20))
+                                    .foregroundStyle(Color.orangeSlide)
+                                Text("\(training[index].steps)")
+                                    .font(Font.custom("Press Start", size: 20))
+                            }
+                            HStack {
+                                Text("Distance:")
+                                    .font(Font.custom("Press Start", size: 20))
+                                    .foregroundStyle(Color.orangeSlide)
+                                Text(" \(training[index].distance, specifier: "%.2f")km")
+                                    .font(Font.custom("Press Start", size: 20))
+                            }
+                            HStack {
+                                Text("Pace:")
+                                    .font(Font.custom("Press Start", size: 20))
+                                    .foregroundStyle(Color.orangeSlide)
+                                Text("\(training[index].pace, specifier: "%.2f") km/min")
+                                    .font(Font.custom("Press Start", size: 20))
+                            }
+                            HStack {
+                                Text("Date:")
+                                    .font(Font.custom("Press Start", size: 20))
+                                    .foregroundStyle(Color.orangeSlide)
+                                Text("\(formatDate(training[index].date))")
+                                    .font(Font.custom("Press Start", size: 20))
+                            }
+
+                        }else{
                             Text("No data recorded for the Beta Version")
                         }
                     }
