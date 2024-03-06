@@ -67,8 +67,9 @@ struct HomePage: View {
                                         }
                                 }
                             }
-                            Text("Player class lvl ")
+                            Text("Human base lvl l")
                                 .font(Font.custom("Press Start", size: 20))
+                                .foregroundStyle(Color.orangeSlide).padding()
                         }
                         CustomDivider(textToDisplay: "Boss").padding(.vertical)
                         
