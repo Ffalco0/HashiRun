@@ -14,6 +14,7 @@ struct ChooseCharacter: View {
         let characterClasses = ["Warrior","Rogue","Mage"]
         @AppStorage("image", store: UserDefaults(suiteName: "character")) var image: String = "human"
         @AppStorage("firstCompletation", store: UserDefaults(suiteName: "character")) var firstCompletation: Bool = false
+        
         @State var rememberSelection: Int? = nil
         
         NavigationStack{
@@ -54,7 +55,6 @@ struct ChooseCharacter: View {
                                          .tag(index)
                                          .padding()
                                          .onTapGesture {
-                                             firstCompletation = true
                                              image = characterImages[index]
                                          }
                                      }

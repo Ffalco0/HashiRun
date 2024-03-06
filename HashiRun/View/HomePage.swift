@@ -39,7 +39,7 @@ struct HomePage: View {
     @State private var showingBattleResult = false
     @State private var battleResult = ""
     
-    @AppStorage("firstCompletation", store: UserDefaults(suiteName: "character")) var firstCompletation: Bool = false
+    @AppStorage("firstCompletation", store: UserDefaults(suiteName: "character")) var firstCompletation: Bool = true
     //Boss challenge
     var boss = Boss(values: [5,5,-5])
     

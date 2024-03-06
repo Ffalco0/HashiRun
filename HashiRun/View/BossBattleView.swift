@@ -28,8 +28,15 @@ struct BattleResultView: View {
                     .padding()
                     .cornerRadius(10)
                 Spacer()
-                if result == "DEFEATED"{}
-                Image(image)
+                if result == "DEFEATED"{
+                    Image("skeleton")
+                        .resizable()
+                        .frame(width: 150, height: 150)
+                }else{
+                    Image(image)
+                        .resizable()
+                        .frame(width: 150, height: 150)
+                }
                 Spacer()
             }
         }
