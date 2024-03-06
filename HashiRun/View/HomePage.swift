@@ -140,7 +140,7 @@ struct HomePage: View {
                     self.showingBattleResult = false
                 })
             }
-        }.onAppear{print(firstCompletation)}
+        }
             .navigationBarBackButtonHidden()
     }
     
