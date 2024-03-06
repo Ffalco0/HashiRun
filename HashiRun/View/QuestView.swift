@@ -122,7 +122,7 @@ struct QuestDetailView: View {
                                 Text("Date:")
                                     .font(Font.custom("Press Start", size: 20))
                                     .foregroundStyle(Color.orangeSlide)
-                                Text("(formatDate(training[index].date))")
+                                Text("\(formatDate(training[index].date))")
                                     .font(Font.custom("Press Start", size: 20))
                             }
 
