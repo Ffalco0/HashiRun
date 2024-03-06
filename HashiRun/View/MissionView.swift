@@ -242,7 +242,11 @@ struct MissionView: View {
     
     func checkProgressCharacter(){
         if progress < 1.0 {
-            progress += 0.50
+            if !firstCompletation{
+                progress += 1.0
+            }else{
+                progress += 0.50
+            }
         }else{
             progress = 0.0
             level += 1

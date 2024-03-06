@@ -49,7 +49,11 @@ struct CharacterView: View {
                                     Text("SKILLS")
                                         .font(Font.custom("Press Start", size: 20))
                                         .padding(.horizontal)
-                                    Spacer()
+                                        .padding()
+                                    
+                                    Text("\(skillPoint)")
+                                        .font(Font.custom("Press Start", size: 15))
+                                        .padding()
                                 }
                                 HStack{
                                     VStack{
@@ -103,16 +107,6 @@ struct CharacterView: View {
                         }
                         
                     }
-                    .navigationTitle("Name Of Your Character")
-                    .toolbar {
-                        ToolbarItem(placement: .topBarTrailing) {
-                            HStack {
-                                Text("\(skillPoint)")
-                                    .font(Font.custom("Press Start", size: 15))
-                                Image(systemName: "gear")
-                            }
-                        }
-                    } 
                 }
                 
             }

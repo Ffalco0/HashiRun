@@ -332,6 +332,7 @@
       }
     },
     "Name Of Your Character" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
