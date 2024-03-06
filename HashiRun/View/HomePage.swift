@@ -41,7 +41,7 @@ struct HomePage: View {
     
     @AppStorage("firstCompletation", store: UserDefaults(suiteName: "character")) var firstCompletation: Bool = true
     //Boss challenge
-    var boss = Boss(values: [5,5,-5])
+    var boss = Boss(values: [0,-1,-1])
     
     var body: some View {
         

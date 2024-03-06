@@ -28,19 +28,24 @@ struct QuestCardFull: View {
                     Spacer()
                     
                     Text(title)
-                            .font(.custom("Press Start", size: 20))
+                        .font(.custom("Press Start", size: 20)).foregroundStyle(Color.orangeSlide)
         
                     Spacer()
                     
-                    Text("Amidst the ancient walls of the mysterious castle, our brave adventurer discovered secret passages and hidden chambers, unlocking the castle's enigmatic history. As the delved deeper, a glint of gold caught his eye, a long lost treasure concealed for centuries, now gleaming in the heart of the forgotten fortress, awaiting its rediscovery.")
-                        .padding()
-                        .font(.custom("Press Start", size: 18))
+                    ScrollView{ 
+                        Text("Amidst the ancient walls of the mysterious castle, our brave adventurer discovered secret passages and hidden chambers, unlocking the castle's enigmatic history. As the delved deeper, a glint of gold caught his eye, a long lost treasure concealed for centuries, now gleaming in the heart of the forgotten fortress, awaiting its rediscovery.")
+                            .padding()
+                            .font(.custom("Press Start", size: 20))
+                    }.frame(width: 350, height: 320)
                     
-                    Spacer()
+                   // Spacer()
                     
-                    Text("Objective : 5 KM")
-                        .font(.custom("Press Start", size: 18))
-                    
+                    HStack{
+                        Text("Objective:")
+                            .font(.custom("Press Start", size: 18)).foregroundColor(Color.orangeSlide)
+                        Text("5 KM")
+                        .font(.custom("Press Start", size: 18))}.padding(.top,100)
+                  
                     
                     NavigationLink(destination: MissionView(distanceToComplete: 5)) {
                         ZStack {
