@@ -7,7 +7,10 @@
 
 import SwiftUI
 
+
+
 struct QuestCardFull: View {
+
     var index:Int
     
     @Binding var isClicked: Bool
@@ -15,34 +18,45 @@ struct QuestCardFull: View {
     
     var title: String
     
+        
     var body: some View {
+        
+        
         NavigationStack {
             ZStack {
                 Color("background").edgesIgnoringSafeArea(.all)
                 
                 VStack{
-                    Text(title)
-                        .padding()
-                        .font(.custom("Press Start", size: 20))
+                    Spacer()
                     
-                    Text("Amidst the ancient walls of the mysterious castle, our brave adventurers discovered secret passages and hidden chambers, unlocking the castle's enigmatic history. As they delved deeper, a glint of gold caught their eye, a long lost treasure concealed for centuries, now gleaming in the heart of the forgotten fortress, awaiting its rediscovery.")
+                    Text(title)
+                            .font(.custom("Press Start", size: 20))
+        
+                    Spacer()
+                    
+                    Text("Amidst the ancient walls of the mysterious castle, our brave adventurer discovered secret passages and hidden chambers, unlocking the castle's enigmatic history. As the delved deeper, a glint of gold caught his eye, a long lost treasure concealed for centuries, now gleaming in the heart of the forgotten fortress, awaiting its rediscovery.")
                         .padding()
                         .font(.custom("Press Start", size: 18))
+                    
                     Spacer()
+                    
                     Text("Objective : 5 KM")
                         .font(.custom("Press Start", size: 18))
-                    Spacer()
+                    
+                    
                     NavigationLink(destination: MissionView(distanceToComplete: 5, index: index)) {
-                        Text("Start")
-                            .foregroundColor(.white) // Text color
-                            .padding(.vertical, 15) // Vertical padding
-                            .padding(.horizontal, 30) // Horizontal padding
-                            .frame(width: 300, height:80) // Set explicit frame size for the button
-                            .background(Color.green) // Button background color
-                            .cornerRadius(20) // Rounded corners
-                    }
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 25.0)
+                                .foregroundStyle(.clear)
+                                Image("buttonBg")
+                            Text("Start")
+                                .font(Font.custom("Press Start", size: 15))
+                                .foregroundStyle(.black)
+                            
+                        }
+                    } .padding(.top, 150)
                     .id(UUID())
-                    .foregroundColor(.white) // Ensure the text color is white if needed
+                    
                 }
             }
         }

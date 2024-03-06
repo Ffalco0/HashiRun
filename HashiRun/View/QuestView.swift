@@ -11,17 +11,15 @@ import SwiftData
 struct Quest: Identifiable {
     let id = UUID()
     let name: String
-    let imageName: String
+    
     let description: String
 }
 
 let quests: [Quest] = [
-    Quest(name: "Distance Explorer", imageName: "key", description: "Urban Explorer"),
-    Quest(name: "Elevation", imageName: "key", description: "Summit Seeker"),
-    Quest(name: "Streak Runner", imageName: "key", description: "Daily Dynamo"),
-    Quest(name: "Speed Demon", imageName: "key", description: "Velocity Victor"),
-    Quest(name: "Charity Run", imageName: "key", description: "Trail Blazer"),
-    Quest(name: "Compassionate Runner", imageName: "key", description: "Trail Blazer")
+    Quest(name: String(localized: "Navigate the unknown"), description: "10 KM"),
+    Quest(name: String(localized: "Find the magic lake"), description: "5 KM"),
+    Quest(name: String(localized: "Escape from the demonic monsters"), description: "2 KM"),
+    Quest(name: String(localized: "Walk through the city of Atlantis"), description: "8 KM")
 ]
 
 struct HistoryView: View {
@@ -38,15 +36,15 @@ struct HistoryView: View {
                         VStack(alignment: .leading, spacing: 15) {
                             ForEach(0..<quests.count, id: \.self) { index in
                                 NavigationLink(destination: QuestDetailView(quest: quests[index],index: index)) {
-                                    HStack(alignment: .center, spacing: 10) {
+                                    HStack(spacing: 10) {
                                         
                                         // Quest name
-                                        ZStack(alignment: .center){
-                                            RoundedRectangle(cornerRadius: 50)
+                                        ZStack(){
+                                            RoundedRectangle(cornerRadius: 25)
                                                 .foregroundColor(Color.gray)
-                                                .frame(width:320)
+                                                .frame(width:350)
                                                 .opacity(0.5)
-                                            VStack(alignment: .leading) {
+                                            VStack(spacing: 10) {
                                                 Text(quests[index].name)
                                                     .font(Font.custom("Press Start", size: 15))
                                                     .fontWeight(.bold)
@@ -59,7 +57,7 @@ struct HistoryView: View {
                                             }.padding()
                                         }
                                     }
-                                    .padding() // Add padding to each item if needed
+                                    
                                 }
                                 .navigationBarTitle("History")
                                 
@@ -83,45 +81,39 @@ struct QuestDetailView: View {
     var body: some View {
             ZStack {
                 Color("background").edgesIgnoringSafeArea(.all)
-                VStack {
-                    // Image with Circle background
-                    ZStack {
-                        Circle()
-                            .foregroundColor(Color.gray)
-                            .opacity(0.5)
-                            .frame(height: 100)
-                        Image("key")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 100, height: 100)
-                    }
-                    
+                VStack(spacing: 20) {
                     Text(quest.name)
-                        .font(.custom("prstart.tiff", size: 22))
+                        .font(Font.custom("Press Start", size: 25))
                         .fontWeight(.bold)
-                        .foregroundColor(Color.yellow)
-                        .lineLimit(1)
+                        .foregroundStyle(.accent)
                     
                     Text("Explore your city or town by running a certain distance in different areas. Uncover hidden gems, scenic views, and new landmarks as you venture through parks, waterfronts, and diverse neighborhoods.")
-                        .font(.custom("prstart.tiff", size: 18))
+                        .font(Font.custom("Press Start", size: 18))
                         .fontWeight(.bold)
                         .foregroundColor(Color.white)
-                        .lineLimit(nil)
                         .multilineTextAlignment(.leading)
                     
                     
-                    VStack(alignment: .center){
+                    VStack(alignment: .leading, spacing: 20){
                         if index < training.count{
+                            
                             Text("Steps: \(training[index].steps)")
+                                .font(Font.custom("Press Start", size: 20))
                             Text("Distance: \(training[index].distance, specifier: "%.2f") km")
-                            Text("Pace: \(training[index].pace, specifier: "%.2f") min/km")
+                                .font(Font.custom("Press Start", size: 20))
+                            Text("Pace: \(training[index].pace, specifier: "%.2f") km/min")
+                                .font(Font.custom("Press Start", size: 20))
                             Text("Date: \(formatDate(training[index].date))")
-                        }else{
+                                .font(Font.custom("Press Start", size: 20))
+                        }
+                        
+                        else{
                             Text("No data recorded for the Beta Version")
                         }
                     }
                 }
                 .padding()
+                .padding(.top, -200)
             }
     }
     func formatDate(_ date: Date) -> String {

@@ -9,8 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct HomePage: View {
-    var missions: [String] = ["Explore the castle","Escape the forest","Talk to the seaman","Find the master sword"]
-    @State var missionComplete:Int = 0
+    var missions: [String] = [String(localized: "Explore the castle"),String(localized: "Escape the forest"),String(localized: "Talk to the seaman"),String(localized: "Find the master sword")]
+    @State var missionComplete: Int = 0
     @State var isClicked: [Bool]
     
     init() {
@@ -114,12 +114,10 @@ struct HomePage: View {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 25.0)
                                         .foregroundStyle(.clear)
-                                        .background(isClicked[index] ? Image("buttonBg").opacity(0.2) :
-                                                        Image("buttonBg").opacity(1))
-                                    Text(missions[index])
+                                        .background(isClicked[index] ? Image("buttonBg").opacity(0.2) : Image("buttonBg").opacity(1))
+                                    Text(String(missions[index]))
                                         .font(Font.custom("Press Start", size: 15))
                                         .foregroundStyle(.black)
-                                    
                                 }
                             }
                             .foregroundColor(.white) // Ensure the text color is white if needed
