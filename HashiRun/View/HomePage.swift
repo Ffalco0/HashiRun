@@ -67,12 +67,13 @@ struct HomePage: View {
                                             currentIndex = (currentIndex + 1) % 3
                                         }
                                 }
+                                
                             }
-                            Text("Player class lvl ")
-                                .font(Font.custom("Press Start", size: 20))
+                            
+                            Text("Human base lvl l")
+                                .font(Font.custom("Press Start", size: 20)).foregroundStyle(Color.orangeSlide).padding()
                         }
                         CustomDivider(textToDisplay: "Boss").padding(.vertical)
-                        
                         Button {
                             showingBattleResult = true
                             

@@ -44,7 +44,7 @@ struct QuestCardFull: View {
                         .font(.custom("Press Start", size: 18))
                     
                     
-                    NavigationLink(destination: MissionView(distanceToComplete: 5, index: index)) {
+                    NavigationLink(destination: MissionView(distanceToComplete: 5)) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 25.0)
                                 .foregroundStyle(.clear)

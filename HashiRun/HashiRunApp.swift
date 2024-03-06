@@ -25,6 +25,7 @@ struct HashiRunApp: App {
     var body: some Scene {
         WindowGroup {
             HomePage()
+                .preferredColorScheme(.dark)
         }
         .modelContainer(container)
     }
