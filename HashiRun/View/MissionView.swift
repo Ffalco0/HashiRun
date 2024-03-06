@@ -62,7 +62,7 @@ struct MissionView: View {
     @AppStorage("progress", store: UserDefaults(suiteName: "character")) var progress: Double = 0.0
     @AppStorage("level", store: UserDefaults(suiteName: "character")) var level : Int = 1
     @AppStorage("skillpoint", store: UserDefaults(suiteName: "character")) var skillPoint: Int = 0
-    @AppStorage("firstCompletation", store: UserDefaults(suiteName: "character")) var firstCompletation: Bool = false
+    @AppStorage("firstCompletation", store: UserDefaults(suiteName: "character")) var firstCompletation: Bool = true
     var distanceToComplete: Double
     
     @Query private var training: [TrainingSession]
@@ -255,14 +255,12 @@ struct MissionView: View {
         timer?.invalidate()
         isRunning = false
         progressTime = 0
-        print(firstCompletation)
-        firstCompletation = true
-        if !firstCompletation{firstCompletation = true}
+        if firstCompletation{firstCompletation = false}
         // Check if the user has completed the quest
         if pedometerManager.distanceInKilometers == distanceToComplete {
             checkProgressCharacter()
         }
-        saveTrainingData(index: training.count - 1)
+        saveTrainingData(index: training.isEmpty ? 0 : training.count - 1)
         backToHome = true
     }
 }

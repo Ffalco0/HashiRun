@@ -104,27 +104,29 @@ struct QuestDetailView: View {
                                 Text("\(training[index].steps)")
                                     .font(Font.custom("Press Start", size: 20))
                             }
-                            HStack {Text("Distance:")
+                            HStack {
+                                Text("Distance:")
                                     .font(Font.custom("Press Start", size: 20))
                                     .foregroundStyle(Color.orangeSlide)
-                                Text(" \(training[index].distance, specifier: "%.2f") km")
+                                Text(" \(training[index].distance, specifier: "%.2f")km")
                                     .font(Font.custom("Press Start", size: 20))
                             }
                             HStack {
                                 Text("Pace:")
                                     .font(Font.custom("Press Start", size: 20))
                                     .foregroundStyle(Color.orangeSlide)
-                                Text("Pace: \(training[index].pace, specifier: "%.2f") km/min")
+                                Text("\(training[index].pace, specifier: "%.2f") km/min")
                                     .font(Font.custom("Press Start", size: 20))
                             }
                             HStack {
-                                
-                                Text("Date: \(formatDate(training[index].date))")
+                                Text("Date:")
+                                    .font(Font.custom("Press Start", size: 20))
+                                    .foregroundStyle(Color.orangeSlide)
+                                Text("(formatDate(training[index].date))")
                                     .font(Font.custom("Press Start", size: 20))
                             }
-                        }
-                        
-                        else{
+
+                        }else{
                             Text("No data recorded for the Beta Version")
                         }
                     }
