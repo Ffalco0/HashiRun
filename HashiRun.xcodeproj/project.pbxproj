@@ -11,6 +11,7 @@
 		4C8869842B90D1BB00432ECC /* StopwatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8869832B90D1BB00432ECC /* StopwatchViewModel.swift */; };
 		4C8869862B90D35500432ECC /* MissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8869852B90D35500432ECC /* MissionView.swift */; };
 		4C8869882B90D36E00432ECC /* FullMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8869872B90D36E00432ECC /* FullMapView.swift */; };
+		4CA1E99E2B9924CA00ACBE87 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4CA1E99D2B9924CA00ACBE87 /* Localizable.xcstrings */; };
 		743088D32B9221BD0008B187 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743088D22B9221BD0008B187 /* Motion.swift */; };
 		743088D52B922C9C0008B187 /* Calories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743088D42B922C9C0008B187 /* Calories.swift */; };
 		7491ABF62B971D49009B7793 /* ChooseCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7491ABF52B971D49009B7793 /* ChooseCharacter.swift */; };
@@ -38,6 +39,7 @@
 		4C8869832B90D1BB00432ECC /* StopwatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewModel.swift; sourceTree = "<group>"; };
 		4C8869852B90D35500432ECC /* MissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionView.swift; sourceTree = "<group>"; };
 		4C8869872B90D36E00432ECC /* FullMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullMapView.swift; sourceTree = "<group>"; };
+		4CA1E99D2B9924CA00ACBE87 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		743088D22B9221BD0008B187 /* Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>"; };
 		743088D42B922C9C0008B187 /* Calories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calories.swift; sourceTree = "<group>"; };
 		7491ABF52B971D49009B7793 /* ChooseCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCharacter.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 		74D555C72B8DEA9600EEA266 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				4CA1E99D2B9924CA00ACBE87 /* Localizable.xcstrings */,
 				74D555C92B8DEAB300EEA266 /* prstart.ttf */,
 				74D555C82B8DEAB200EEA266 /* prstartk.ttf */,
 			);
@@ -222,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74D5556E2B88D35D00EEA266 /* Preview Assets.xcassets in Resources */,
+				4CA1E99E2B9924CA00ACBE87 /* Localizable.xcstrings in Resources */,
 				74D555CA2B8DEB9E00EEA266 /* prstart.ttf in Resources */,
 				74D5556B2B88D35D00EEA266 /* Assets.xcassets in Resources */,
 				74D555CB2B8DEBA000EEA266 /* prstartk.ttf in Resources */,

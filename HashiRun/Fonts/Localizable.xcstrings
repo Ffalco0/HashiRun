@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    " %.2fkm" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " %.2fkm"
+          }
+        }
+      }
+    },
     ":" : {
       "localizations" : {
         "it" : {
@@ -67,6 +77,16 @@
         }
       }
     },
+    "5 KM" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 KM"
+          }
+        }
+      }
+    },
     "Amidst the ancient walls of the mysterious castle, our brave adventurer discovered secret passages and hidden chambers, unlocking the castle's enigmatic history. As the delved deeper, a glint of gold caught his eye, a long lost treasure concealed for centuries, now gleaming in the heart of the forgotten fortress, awaiting its rediscovery." : {
       "localizations" : {
         "it" : {
@@ -99,6 +119,7 @@
       }
     },
     "Back" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -138,6 +159,16 @@
         }
       }
     },
+    "Choose your Hero" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli il tuo Eroe"
+          }
+        }
+      }
+    },
     "COLLECTIBLES" : {
       "localizations" : {
         "it" : {
@@ -148,7 +179,18 @@
         }
       }
     },
+    "Date:" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data:"
+          }
+        }
+      }
+    },
     "Date: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -178,7 +220,18 @@
         }
       }
     },
+    "Distance:" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distance:"
+          }
+        }
+      }
+    },
     "Distance: %.2f km" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -258,6 +311,16 @@
         }
       }
     },
+    "Human base lvl l" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Umano lvl 1"
+          }
+        }
+      }
+    },
     "Lvl %lld" : {
       "localizations" : {
         "it" : {
@@ -299,6 +362,7 @@
       }
     },
     "Objective : 5 KM" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -308,7 +372,18 @@
         }
       }
     },
+    "Objective:" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obiettivo:"
+          }
+        }
+      }
+    },
     "OK" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -328,7 +403,18 @@
         }
       }
     },
+    "Pace:" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Velocità:"
+          }
+        }
+      }
+    },
     "Pace: %.2f km/min" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -359,6 +445,7 @@
       }
     },
     "Player class lvl " : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -398,7 +485,18 @@
         }
       }
     },
+    "Steps:" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passi:"
+          }
+        }
+      }
+    },
     "Steps: %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -444,6 +542,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Parla con il marinaio"
+          }
+        }
+      }
+    },
+    "This choice will be permanent!!" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa scelta sarà permanente!"
           }
         }
       }

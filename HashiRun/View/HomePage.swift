@@ -41,7 +41,7 @@ struct HomePage: View {
     
     @AppStorage("firstCompletation", store: UserDefaults(suiteName: "character")) var firstCompletation: Bool = false
     //Boss challenge
-    var boss = Boss(values: [5,5,-5])
+    var boss = Boss(values: [0,-1,-1])
     
     var body: some View {
         
@@ -66,13 +66,13 @@ struct HomePage: View {
                                             currentIndex = (currentIndex + 1) % 3
                                         }
                                 }
+                                
                             }
+                            
                             Text("Human base lvl l")
-                                .font(Font.custom("Press Start", size: 20))
-                                .foregroundStyle(Color.orangeSlide).padding()
+                                .font(Font.custom("Press Start", size: 20)).foregroundStyle(Color.orangeSlide).padding()
                         }
                         CustomDivider(textToDisplay: "Boss").padding(.vertical)
-                        
                         Button {
                             showingBattleResult = true
                             

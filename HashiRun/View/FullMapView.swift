@@ -18,22 +18,27 @@ struct FullMapView: View {
     let locationManager = CLLocationManager()
     
     var body: some View {
-        HStack{
-            Button("Back") {
-                dismiss()
+        ZStack(alignment: .topTrailing) {
+            Map(
+                coordinateRegion: regionBinding,
+                showsUserLocation: true,
+                userTrackingMode: .constant(.follow)
+            )
+            .edgesIgnoringSafeArea(.all)
+            .onAppear {
+                locationManager.requestWhenInUseAuthorization()
             }
+            
+            Button(action: {
+                            dismiss()
+                        }) {
+                            Image(systemName: "x.circle")
+                                .foregroundStyle(.accent)
+                                .font(.system(size: 40))
+                                .fontWeight(.semibold)
+                                .padding()
+                                
+                        }
         }
-        Map (
-            coordinateRegion: regionBinding,
-            showsUserLocation: true,
-            userTrackingMode: .constant(.follow)
-        )
-        .edgesIgnoringSafeArea(.all)
-        .navigationBarBackButtonHidden(false)
-        .onAppear {
-            locationManager.requestWhenInUseAuthorization()
-        }
-        
-        
     }
 }

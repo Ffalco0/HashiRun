@@ -96,11 +96,12 @@ struct QuestDetailView: View {
                     
                     VStack(alignment: .leading, spacing: 20){
                         if index < training.count{
+                            
                             HStack {
                                 Text("Steps:")
                                     .font(Font.custom("Press Start", size: 20))
                                     .foregroundStyle(Color.orangeSlide)
-                                Text("(training[index].steps)")
+                                Text("\(training[index].steps)")
                                     .font(Font.custom("Press Start", size: 20))
                             }
                             HStack {
@@ -121,7 +122,7 @@ struct QuestDetailView: View {
                                 Text("Date:")
                                     .font(Font.custom("Press Start", size: 20))
                                     .foregroundStyle(Color.orangeSlide)
-                                Text("(formatDate(training[index].date))")
+                                Text("\(formatDate(training[index].date))")
                                     .font(Font.custom("Press Start", size: 20))
                             }
 
