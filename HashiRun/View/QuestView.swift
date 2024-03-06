@@ -96,6 +96,7 @@ struct QuestDetailView: View {
                     
                     VStack(alignment: .leading, spacing: 20){
                         if index < training.count{
+                            
                             HStack {
                                 Text("Steps:")
                                     .font(Font.custom("Press Start", size: 20))
