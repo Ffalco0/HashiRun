@@ -39,7 +39,7 @@ struct HomePage: View {
     @State private var showingBattleResult = false
     @State private var battleResult = ""
     
-    @AppStorage("firstCompletation", store: UserDefaults(suiteName: "character")) var firstCompletation: Bool = true
+    @AppStorage("firstCompletation", store: UserDefaults(suiteName: "character")) var firstCompletation: Bool = false
     //Boss challenge
     var boss = Boss(values: [5,5,-5])
     
@@ -52,7 +52,7 @@ struct HomePage: View {
                 ScrollView{
                     VStack{
                         VStack(){
-                            NavigationLink(destination: firstCompletation ?  AnyView(CharacterView()) : AnyView(ChooseCharacter()) ) {
+                            NavigationLink(destination: firstCompletation ?  AnyView(ChooseCharacter()) : AnyView(CharacterView()) ) {
                                 ZStack {
                                     Circle()
                                         .foregroundColor(Color.gray)
@@ -128,6 +128,7 @@ struct HomePage: View {
                     }
                 }
             }.onAppear{
+                firstCompletation = false
                 if skillValues.isEmpty{
                     self.create()
                 }

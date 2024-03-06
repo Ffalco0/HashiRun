@@ -21,51 +21,51 @@ struct ChooseCharacter: View {
             ZStack {
                 Color("background").edgesIgnoringSafeArea(.all)
                 VStack{
+                    Spacer()
                     Text("Choose your Hero")
                         .foregroundStyle(.white)
                         .multilineTextAlignment(.center)
                         .font(Font.custom("Press Start", size: 30))
                     
-                    Spacer()
-                    TabView{
-                         ScrollView(.horizontal, showsIndicators: false){
-                             HStack(spacing: 15){
-                                 Spacer()
-                                 ForEach(0..<characterImages.count, id: \.self) { index in
-                                     NavigationLink(destination: CharacterView()){
-                                         VStack{
-                                             ZStack{
-                                                 Circle()
-                                                     .foregroundStyle(.gray)
-                                                     .frame(width: 300)
-                                                     .opacity(0.25)
-                                                 
-                                                 Image(characterImages[index])
-                                                     .resizable()
-                                                     .scaledToFit()
-                                                     .frame(width: 200, height: 200)
-                                             }
-                                             .padding()
-                                             Text(characterClasses[index])
-                                                 .foregroundStyle(.white)
-                                                 .font(Font.custom("Press Start", size: 30))
-                                                 .multilineTextAlignment(.center)
-                                             
-                                         }
-                                         .tag(index)
-                                         .padding()
-                                         .onTapGesture {
-                                             image = characterImages[index]
-                                         }
-                                     }
-                                 }.scrollTargetLayout()
-                                 Spacer()
-                             }
-                         }.scrollTargetBehavior(.paging)
+                    HStack{
+                        Spacer()
+                        TabView{
+                            ForEach(0..<characterImages.count, id: \.self) { index in
+                                Button(action: {
+                                    image = characterImages[index]
+                                    print(image)
+                                }, label: {
+                                    NavigationLink(destination: HomePage()){
+                                        VStack{
+                                            ZStack{
+                                                Circle()
+                                                    .foregroundStyle(.gray)
+                                                    .frame(width: 300)
+                                                    .opacity(0.25)
+                                                
+                                                Image(characterImages[index])
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: 200, height: 200)
+                                            }
+                                            .padding()
+                                            Text(characterClasses[index])
+                                                .foregroundStyle(.white)
+                                                .font(Font.custom("Press Start", size: 30))
+                                                .multilineTextAlignment(.center)
+                                            
+                                        }
+                                        .padding()
+                                    }
+                                })
+                            }
+                            
+                            
+                        }
+                        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                        .indexViewStyle(.page(backgroundDisplayMode: .always))
+                        
                     }
-                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-                    .indexViewStyle(.page(backgroundDisplayMode: .always))
-                    
                     Spacer()
                     
                     Text("This choice will be permanent!!")
