@@ -32,7 +32,7 @@ struct QuestCardFull: View {
                     Text("Objective : 5 KM")
                         .font(.custom("Press Start", size: 18))
                     Spacer()
-                    NavigationLink(destination: MissionView(distanceToComplete: 5, index: index)) {
+                    NavigationLink(destination: MissionView(distanceToComplete: 5)) {
                         Text("Start")
                             .foregroundColor(.white) // Text color
                             .padding(.vertical, 15) // Vertical padding

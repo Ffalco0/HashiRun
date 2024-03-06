@@ -68,12 +68,11 @@ struct MissionView: View {
     @Query private var training: [TrainingSession]
     @Environment(\.modelContext) private var context
     
-    var index:Int
-    
+
     var body: some View {
         NavigationStack {
             NavigationLink(destination: HomePage(), isActive: self.$backToHome) { EmptyView() }
-            NavigationLink(destination: ChooseCharacter(), isActive: self.$firstCompletation) { EmptyView() }
+            
             
             Map (
                 coordinateRegion: regionBinding,
@@ -234,7 +233,7 @@ struct MissionView: View {
         context.insert(training)
     }
     
-    func saveTrainingData(inedx:Int){
+    func saveTrainingData(index:Int){
         training[index].steps = pedometerManager.steps
         training[index].distance = pedometerManager.distanceInKilometers
         training[index].pace = pedometerManager.paceInMinutesPerKilometer
@@ -252,23 +251,20 @@ struct MissionView: View {
     }
     
     private func handleStop() {
-          // Invalidate the timer
-          timer?.invalidate()
-          isRunning = false
-          progressTime = 0
-          firstCompletation = true
-          // Check if the user has completed the quest
-          if pedometerManager.distanceInKilometers == distanceToComplete {
-              // Handle quest completion
-              checkProgressCharacter()
-              saveTrainingData(inedx: training.count)
-          }
-          
-          // Check if this is the first completion
-          if firstCompletation {
-              backToHome = true
-          }
-      }
+        // Invalidate the timer
+        timer?.invalidate()
+        isRunning = false
+        progressTime = 0
+        print(firstCompletation)
+        firstCompletation = true
+        if !firstCompletation{firstCompletation = true}
+        // Check if the user has completed the quest
+        if pedometerManager.distanceInKilometers == distanceToComplete {
+            checkProgressCharacter()
+        }
+        saveTrainingData(index: training.count - 1)
+        backToHome = true
+    }
 }
 
 

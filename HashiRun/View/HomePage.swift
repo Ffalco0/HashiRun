@@ -21,64 +21,52 @@ struct HomePage: View {
     @Query private var skillValues: [Skill]
     @Query private var training: [TrainingSession]
     
-    //Variabl to handle the charater window
-    let images = ["bg", "bg1", "bg2"]
-    @State private var randomImageName = "bg"
-    let animationImages = ["human1", "human3", "human2"] // Replace with your image names
+    @AppStorage("image", store: UserDefaults(suiteName: "character")) var image: String = "human1"
+    @State var imageDic = ["human1": ["human1", "human2", "human3"],
+                           "mage11": ["mage11", "mage12", "mage13"],
+                           "mage2": ["mage21", "mage22", "mage23"],
+                           "mage3": ["mage31", "mage32", "mage33"],
+                           "rogue11": ["rogue11", "rogue12", "rogue13"],
+                           "rogue2": ["rogue21", "rogue22", "rogue23"],
+                           "rogue3": ["rogue31", "rogue32", "rogue33"],
+                           "warrior11": ["warrior11", "warrior12", "warrior13"],
+                           "warrior2": ["warrior21", "warrior22", "warrior23"],
+                           "warrior3": ["warrior31", "warrior32", "warrior33"]]
+    
     let timer = Timer.publish(every: 1/5, on: .main, in: .common).autoconnect()
     @State var currentIndex = 0
     
     @State private var showingBattleResult = false
     @State private var battleResult = ""
-
     
+    @AppStorage("firstCompletation", store: UserDefaults(suiteName: "character")) var firstCompletation: Bool = false
     //Boss challenge
-    var boss = Boss(values: [0,-1,-5])
+    var boss = Boss(values: [5,5,-5])
     
     var body: some View {
         
         NavigationStack{
             ZStack {
-                /*
-                 LinearGradient(gradient: Gradient(colors: [Color("bg"),Color("bg2"),Color("bg"),Color("bg2")]), startPoint: .topLeading, endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
-                 */
                 Color("background").edgesIgnoringSafeArea(.all)
                 
                 ScrollView{
                     
                     VStack{
                         VStack(){
-                            NavigationLink(destination: CharacterView()) {
+                            NavigationLink(destination: firstCompletation ?  AnyView(CharacterView()) : AnyView(ChooseCharacter()) ) {
                                 ZStack {
-                                    
-                                    /*
-                                     Image(randomImageName)
-                                     .resizable()
-                                     .aspectRatio(contentMode: .fit)
-                                     .frame(width: 280, height: 280).clipShape(RoundedRectangle(cornerRadius: 40))
-                                     .onAppear {
-                                     let randomIndex = Int.random(in: 0..<3)
-                                     randomImageName = images[randomIndex]
-                                     }
-                                     */
-                                    
                                     Circle()
                                         .foregroundColor(Color.gray)
                                         .frame(width:280)
                                         .opacity(0.5)
                                     
-                                    Image(animationImages[currentIndex])
+                                    Image(imageDic[image]==nil ? imageDic["human"]![currentIndex] : imageDic[image]![currentIndex])
                                         .resizable()
                                         .frame(width: 175, height: 175)
-                                    //.scaleEffect(0.5)
                                         .onReceive(timer) { _ in
-                                            currentIndex = (currentIndex + 1) % animationImages.count
-                                        }//.padding(.top, 100)
-                                    
-                                    
+                                            currentIndex = (currentIndex + 1) % 3
+                                        }
                                 }
-                                
-                                
                             }
                             Text("Player class lvl ")
                                 .font(Font.custom("Press Start", size: 20))
@@ -122,9 +110,8 @@ struct HomePage: View {
                                     
                                 }
                             }
-                            .foregroundColor(.white) // Ensure the text color is white if needed
-                            .disabled(isClicked[index]) // Disable the button if it has been clicked
-                            //.shadow(color: .black, radius: 10, x: 0, y: 5) // Add shadow here
+                            .foregroundColor(.white)
+                            .disabled(isClicked[index])
                             .padding()
                         }.padding()
                         
@@ -149,17 +136,14 @@ struct HomePage: View {
                 
             }
             .fullScreenCover(isPresented: $showingBattleResult, onDismiss: {
-                // Questa funzione verrà chiamata quando la fullScreenCover viene chiusa.
                 print("Tornato alla HomePage")
             }) {
-                // Qui definisci la vista da mostrare nella fullScreenCover
                 BattleResultView(result: self.battle(), onDismiss: {
-                    // Imposta showingBattleResult a false per chiudere la fullScreenCover
                     self.showingBattleResult = false
                 })
             }
-        }
-        .navigationBarBackButtonHidden()
+        }.onAppear{print(image)}
+            .navigationBarBackButtonHidden()
     }
     
     
@@ -167,7 +151,7 @@ struct HomePage: View {
         let skillsV = Skill(skillValue: [0,0,0])
         context.insert(skillsV)
     }
-   
+    
     
     
     //Temporary boss challenge
@@ -177,9 +161,9 @@ struct HomePage: View {
             result += challengeBoss(index: index)
         }
         if result > 1{
-            return "You win the boss challenge"
+            return "You BEAT the boss !!"
         }else{
-            return "You lose the boss challenge"
+            return "DEFEATED"
         }
     }
     
@@ -194,30 +178,34 @@ struct HomePage: View {
     
 }
 
+
+
 struct BattleResultView: View {
     let result: String
     var onDismiss: () -> Void
+    @AppStorage("image", store: UserDefaults(suiteName: "character")) var image: String = "human1"
     
     var body: some View {
         ZStack {
             // Sfondo per la schermata del risultato della battaglia
-            Color.black.opacity(0.5).edgesIgnoringSafeArea(.all)
+            Color("background").opacity(0.5).edgesIgnoringSafeArea(.all)
             
             // Visualizzazione del risultato
             VStack {
                 Spacer()
                 Text(result)
-                    .font(.title)
-                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                    .font(Font.custom("Press Start", size: 35))
+                    .foregroundColor(Color("orangeSlide"))
                     .padding()
-                    .background(Color.gray)
                     .cornerRadius(10)
                 Spacer()
-                Button("OK", action: onDismiss)
+                if result == "DEFEATED"{}
+                Image(image)
+                Spacer()
             }
         }
         .onTapGesture {
-            // Chiama onDismiss quando si tocca ovunque sulla schermata
             onDismiss()
         }
     }

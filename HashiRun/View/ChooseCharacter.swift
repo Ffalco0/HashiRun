@@ -8,36 +8,73 @@
 import SwiftUI
 
 struct ChooseCharacter: View {
+    
     var body: some View {
-        let characterImages = ["image 8pg", "ladroliv1 1pg", "magelvl1 1pg"]
+        let characterImages = ["warrior11", "rogue11", "mage11"]
         let characterClasses = ["Warrior","Rogue","Mage"]
-        @AppStorage("image", store: UserDefaults(suiteName: "character")) var image: String = "human3"
+        @AppStorage("image", store: UserDefaults(suiteName: "character")) var image: String = "human"
+        @AppStorage("firstCompletation", store: UserDefaults(suiteName: "character")) var firstCompletation: Bool = false
         @State var rememberSelection: Int? = nil
         
-        ZStack {
-            Color("background").edgesIgnoringSafeArea(.all)
-            
-            HStack {
-                ForEach(0..<characterImages.count, id: \.self) { index in
-                    NavigationLink(destination: CharacterView()){
-                        VStack {
-                            Image(characterImages[index])
-                                .resizable() // Make the image resizable
-                                .scaledToFit() // Keep the image's aspect ratio
-                                .frame(width: 100, height: 100)
-                            
-                            Text(characterClasses[index])
-                                .foregroundStyle(.white)
-                                .font(Font.custom("Press Start", size: 20))
-                                .multilineTextAlignment(.center)
-                        }
-                        .padding()
-                        .onTapGesture {
-                            image = characterImages[index]
-                        }
+        NavigationStack{
+            ZStack {
+                Color("background").edgesIgnoringSafeArea(.all)
+                VStack{
+                    Text("Choose your Hero")
+                        .foregroundStyle(.white)
+                        .multilineTextAlignment(.center)
+                        .font(Font.custom("Press Start", size: 30))
+                    
+                    Spacer()
+                    TabView{
+                         ScrollView(.horizontal, showsIndicators: false){
+                             HStack(spacing: 15){
+                                 Spacer()
+                                 ForEach(0..<characterImages.count, id: \.self) { index in
+                                     NavigationLink(destination: CharacterView()){
+                                         VStack{
+                                             //TabView{
+                                             ZStack{
+                                                 Circle()
+                                                     .frame(width: 300)
+                                                     .opacity(0.4)
+                                                 
+                                                 Image(characterImages[index])
+                                                     .resizable()
+                                                     .scaledToFit()
+                                                     .frame(width: 200, height: 200)
+                                             }
+                                             .padding()
+                                             Text(characterClasses[index])
+                                                 .foregroundStyle(.white)
+                                                 .font(Font.custom("Press Start", size: 30))
+                                                 .multilineTextAlignment(.center)
+                                             
+                                         }
+                                         .tag(index)
+                                         .padding()
+                                         .onTapGesture {
+                                             print(index)
+                                             firstCompletation = true
+                                             image = characterImages[index]
+                                         }
+                                     }
+                                 }.scrollTargetLayout()
+                                 Spacer()
+                             }
+                         }.scrollTargetBehavior(.paging)
                     }
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                    .indexViewStyle(.page(backgroundDisplayMode: .always))
+                    
+                    Spacer()
+                    
+                    Text("This choice will be permanent!!")
+                        .foregroundStyle(.white)
+                        .multilineTextAlignment(.center)
+                        .font(Font.custom("Press Start", size: 30))
                 }
-            }
+            }.navigationBarBackButtonHidden()
         }
     }
 }
@@ -45,3 +82,5 @@ struct ChooseCharacter: View {
 #Preview {
     ChooseCharacter()
 }
+
+

@@ -8,11 +8,11 @@ struct FullMapView: View {
     )
     
     var regionBinding: Binding<MKCoordinateRegion> {
-            .init(
-                get: { region },
-                set: { newValue in DispatchQueue.main.async { region = newValue } }
-            )
-        }
+        .init(
+            get: { region },
+            set: { newValue in DispatchQueue.main.async { region = newValue } }
+        )
+    }
     
     @Environment(\.dismiss) private var dismiss
     let locationManager = CLLocationManager()
@@ -23,17 +23,17 @@ struct FullMapView: View {
                 dismiss()
             }
         }
-            Map (
-                coordinateRegion: regionBinding,
-                showsUserLocation: true,
-                userTrackingMode: .constant(.follow)
-            )
-            .edgesIgnoringSafeArea(.all)
-            .navigationBarBackButtonHidden(false)
-            .onAppear {
-                locationManager.requestWhenInUseAuthorization()
-            }
-            
+        Map (
+            coordinateRegion: regionBinding,
+            showsUserLocation: true,
+            userTrackingMode: .constant(.follow)
+        )
+        .edgesIgnoringSafeArea(.all)
+        .navigationBarBackButtonHidden(false)
+        .onAppear {
+            locationManager.requestWhenInUseAuthorization()
+        }
+        
         
     }
 }
