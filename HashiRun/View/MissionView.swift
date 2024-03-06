@@ -119,7 +119,7 @@ struct MissionView: View {
                             .font(.title3)
                             .fontWeight(.semibold)
                         
-                        Text("\(pedometerManager.paceInMinutesPerKilometer, specifier: "%.2f") min/km")
+                        Text("\(pedometerManager.paceInMinutesPerKilometer, specifier: "%.2f") km/min")
                             .font(.title3)
                             .fontWeight(.semibold)
                     }

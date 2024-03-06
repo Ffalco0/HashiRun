@@ -12,9 +12,8 @@ struct CharacterView: View {
     @AppStorage("progress", store: UserDefaults(suiteName: "character")) var progress: Double = 0.0
     @AppStorage("level", store: UserDefaults(suiteName: "character")) var level : Int = 1
     @AppStorage("skillpoint", store: UserDefaults(suiteName: "character")) var skillPoint: Int = 0
-    @AppStorage("image", store: UserDefaults(suiteName: "character")) var image: String = "human1"
-    
-    private var skills: [String] = ["Strenght", "Dexstry","Wisdom"]
+    @AppStorage("image", store: UserDefaults(suiteName: "character")) var image: String = "human3"
+    private var skills: [String] = [String(localized: "Strenght"), String(localized: "Dexterity"),String(localized: "Wisdom")]
     
     
     @Environment(\.modelContext) private var context
@@ -104,7 +103,7 @@ struct CharacterView: View {
                         }
                         
                     }
-                    .navigationTitle("Name Of Your Adventurer")
+                    .navigationTitle("Name Of Your Character")
                     .toolbar {
                         ToolbarItem(placement: .topBarTrailing) {
                             HStack {

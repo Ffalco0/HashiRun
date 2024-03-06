@@ -1,0 +1,483 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    ":" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ":"
+          }
+        }
+      }
+    },
+    "%.2f" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%.2f"
+          }
+        }
+      }
+    },
+    "%.2f km / %.0fkm" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$.2f km / %2$.0fkm"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$.2f km / %2$.0fkm"
+          }
+        }
+      }
+    },
+    "%.2f km/min" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%.2f km/min"
+          }
+        }
+      }
+    },
+    "%@" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
+    "Amidst the ancient walls of the mysterious castle, our brave adventurer discovered secret passages and hidden chambers, unlocking the castle's enigmatic history. As the delved deeper, a glint of gold caught his eye, a long lost treasure concealed for centuries, now gleaming in the heart of the forgotten fortress, awaiting its rediscovery." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tra le antiche mura del misterioso castello, il nostro coraggioso avventuriero ha scoperto passaggi segreti e camere nascoste, svelando l'enigmatica storia del castello. Mentre scavava più a fondo, un luccichio d'oro catturò la sua attenzione: un tesoro a lungo perduto, nascosto per secoli, che ora brillava nel cuore della fortezza dimenticata, in attesa di essere riscoperto."
+          }
+        }
+      }
+    },
+    "Amidst the ancient walls of the mysterious castle, our brave adventurers discovered secret passages and hidden chambers, unlocking the castle's enigmatic history. As they delved deeper, a glint of gold caught their eye, a long lost treasure concealed for centuries, now gleaming in the heart of the forgotten fortress, awaiting its rediscovery." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tra le antiche mura del misterioso castello, il nostro coraggioso avventurieoi hanno scoperto passaggi segreti e camere nascoste, svelando l'enigmatica storia del castello. Mentre scavavano più a fondo, un luccichio d'oro ha catturato la loro attenzione, un tesoro a lungo perduto nascosto per secoli, che ora brilla nel cuore della fortezza dimenticata, in attesa di essere riscoperto."
+          }
+        }
+      }
+    },
+    "Are you sure?" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sei sicuro?"
+          }
+        }
+      }
+    },
+    "Back" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indietro"
+          }
+        }
+      }
+    },
+    "Button" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bottone"
+          }
+        }
+      }
+    },
+    "Calories" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calorie"
+          }
+        }
+      }
+    },
+    "Challenge The Boss" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sfida il Boss"
+          }
+        }
+      }
+    },
+    "COLLECTIBLES" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "COLLEZIONABILI"
+          }
+        }
+      }
+    },
+    "Date: %@" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data: %@"
+          }
+        }
+      }
+    },
+    "Dexterity" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Destrezza"
+          }
+        }
+      }
+    },
+    "Distance" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distanza"
+          }
+        }
+      }
+    },
+    "Distance: %.2f km" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distanza :  %.2f km"
+          }
+        }
+      }
+    },
+    "Escape from the demonic monsters" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scappa dai mostri demoniaci"
+          }
+        }
+      }
+    },
+    "Escape the forest" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scappa dalla foresta"
+          }
+        }
+      }
+    },
+    "Explore the castle" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esplora il castello"
+          }
+        }
+      }
+    },
+    "Explore your city or town by running a certain distance in different areas. Uncover hidden gems, scenic views, and new landmarks as you venture through parks, waterfronts, and diverse neighborhoods." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esplora la tua città correndo una certa distanza in diverse aree. Scopri gemme nascoste, scenari mozzafiato e nuovi punti di interesse mentre passeggi per parchi, lungomare e diversi quartieri."
+          }
+        }
+      }
+    },
+    "Find the magic lake" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trova il lago magico"
+          }
+        }
+      }
+    },
+    "Find the master sword" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trova la Spada Suprema"
+          }
+        }
+      }
+    },
+    "History" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archivio"
+          }
+        }
+      }
+    },
+    "Lvl %lld" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lvl %lld"
+          }
+        }
+      }
+    },
+    "Name Of Your Character" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome del tuo personaggio"
+          }
+        }
+      }
+    },
+    "Navigate the unknown" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naviga nell'ignoto"
+          }
+        }
+      }
+    },
+    "No data recorded for the Beta Version" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun dato è stato registrato nella versione beta"
+          }
+        }
+      }
+    },
+    "Objective : 5 KM" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obiettivo : 5 KM"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "Pace" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Velocità"
+          }
+        }
+      }
+    },
+    "Pace: %.2f km/min" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pace: %.2f km/min"
+          }
+        }
+      }
+    },
+    "Pause/Stop" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pausa/Stop"
+          }
+        }
+      }
+    },
+    "Play/Stop" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avvia/Stop"
+          }
+        }
+      }
+    },
+    "Player class lvl " : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Classe giocatore lvl"
+          }
+        }
+      }
+    },
+    "SKILLS" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ABILITA'"
+          }
+        }
+      }
+    },
+    "Start" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inizia"
+          }
+        }
+      }
+    },
+    "Steps" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passi"
+          }
+        }
+      }
+    },
+    "Steps: %lld" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passi: %lld"
+          }
+        }
+      }
+    },
+    "Stop" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        }
+      }
+    },
+    "Stopping the timer will reset the progress. Do you want to continue?" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fermare il timer ti farà perdere tutti i progressi fatti. Sei sicuro di voler continuare?"
+          }
+        }
+      }
+    },
+    "Strenght" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forza"
+          }
+        }
+      }
+    },
+    "Talk to the seaman" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parla con il marinaio"
+          }
+        }
+      }
+    },
+    "Time" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tempo"
+          }
+        }
+      }
+    },
+    "Walk through the city of Atlantis" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cammina per la città di Atlantis"
+          }
+        }
+      }
+    },
+    "Wisdom" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saggezza"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
