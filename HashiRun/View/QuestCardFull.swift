@@ -8,9 +8,7 @@
 import SwiftUI
 
 
-
 struct QuestCardFull: View {
-
     var index:Int
     
     @Binding var isClicked: Bool
@@ -43,18 +41,18 @@ struct QuestCardFull: View {
                     Text("Objective : 5 KM")
                         .font(.custom("Press Start", size: 18))
                     
-                    
-                    NavigationLink(destination: MissionView(distanceToComplete: 5, index: index)) {
+                    NavigationLink(destination: MissionView(distanceToComplete: 5)) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 25.0)
                                 .foregroundStyle(.clear)
-                                Image("buttonBg")
+                            Image("buttonBg")
                             Text("Start")
                                 .font(Font.custom("Press Start", size: 15))
                                 .foregroundStyle(.black)
                             
                         }
-                    } .padding(.top, 150)
+                    }
+                    .padding(.top, 150)
                     .id(UUID())
                     
                 }

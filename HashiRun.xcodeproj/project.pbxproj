@@ -14,6 +14,7 @@
 		743088D32B9221BD0008B187 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743088D22B9221BD0008B187 /* Motion.swift */; };
 		743088D52B922C9C0008B187 /* Calories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743088D42B922C9C0008B187 /* Calories.swift */; };
 		7491ABF62B971D49009B7793 /* ChooseCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7491ABF52B971D49009B7793 /* ChooseCharacter.swift */; };
+		7491ABF82B990C18009B7793 /* BossBattleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7491ABF72B990C18009B7793 /* BossBattleView.swift */; };
 		74C3A5572B95CF9A00EB55BD /* TrainingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C3A5562B95CF9A00EB55BD /* TrainingSession.swift */; };
 		74D555672B88D35C00EEA266 /* HashiRunApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555662B88D35C00EEA266 /* HashiRunApp.swift */; };
 		74D555692B88D35C00EEA266 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D555682B88D35C00EEA266 /* HomePage.swift */; };
@@ -40,6 +41,7 @@
 		743088D22B9221BD0008B187 /* Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>"; };
 		743088D42B922C9C0008B187 /* Calories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calories.swift; sourceTree = "<group>"; };
 		7491ABF52B971D49009B7793 /* ChooseCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCharacter.swift; sourceTree = "<group>"; };
+		7491ABF72B990C18009B7793 /* BossBattleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossBattleView.swift; sourceTree = "<group>"; };
 		74C3A5562B95CF9A00EB55BD /* TrainingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSession.swift; sourceTree = "<group>"; };
 		74D555632B88D35C00EEA266 /* HashiRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HashiRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74D555662B88D35C00EEA266 /* HashiRunApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashiRunApp.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				4C8869852B90D35500432ECC /* MissionView.swift */,
 				4C8869872B90D36E00432ECC /* FullMapView.swift */,
 				7491ABF52B971D49009B7793 /* ChooseCharacter.swift */,
+				7491ABF72B990C18009B7793 /* BossBattleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				74D555882B88F9D900EEA266 /* QuestCardFull.swift in Sources */,
 				4C8869862B90D35500432ECC /* MissionView.swift in Sources */,
 				74E52F5E2B908F4B008018CD /* MissionEvents.swift in Sources */,
+				7491ABF82B990C18009B7793 /* BossBattleView.swift in Sources */,
 				74D555692B88D35C00EEA266 /* HomePage.swift in Sources */,
 				74D555672B88D35C00EEA266 /* HashiRunApp.swift in Sources */,
 				4C8869842B90D1BB00432ECC /* StopwatchViewModel.swift in Sources */,

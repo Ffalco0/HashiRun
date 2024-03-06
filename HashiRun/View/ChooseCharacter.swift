@@ -33,11 +33,11 @@ struct ChooseCharacter: View {
                                  ForEach(0..<characterImages.count, id: \.self) { index in
                                      NavigationLink(destination: CharacterView()){
                                          VStack{
-                                             //TabView{
                                              ZStack{
                                                  Circle()
+                                                     .foregroundStyle(.gray)
                                                      .frame(width: 300)
-                                                     .opacity(0.4)
+                                                     .opacity(0.25)
                                                  
                                                  Image(characterImages[index])
                                                      .resizable()
@@ -54,7 +54,6 @@ struct ChooseCharacter: View {
                                          .tag(index)
                                          .padding()
                                          .onTapGesture {
-                                             print(index)
                                              firstCompletation = true
                                              image = characterImages[index]
                                          }

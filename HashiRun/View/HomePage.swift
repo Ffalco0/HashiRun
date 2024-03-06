@@ -50,7 +50,6 @@ struct HomePage: View {
                 Color("background").edgesIgnoringSafeArea(.all)
                 
                 ScrollView{
-                    
                     VStack{
                         VStack(){
                             NavigationLink(destination: firstCompletation ?  AnyView(CharacterView()) : AnyView(ChooseCharacter()) ) {
@@ -131,7 +130,6 @@ struct HomePage: View {
                 if skillValues.isEmpty{
                     self.create()
                 }
-                
             }
             .fullScreenCover(isPresented: $showingBattleResult, onDismiss: {
                 print("Tornato alla HomePage")
@@ -140,14 +138,17 @@ struct HomePage: View {
                     self.showingBattleResult = false
                 })
             }
-        }.onAppear{print(image)}
+        }.onAppear{print(firstCompletation)}
             .navigationBarBackButtonHidden()
     }
     
     
     private func create(){
         let skillsV = Skill(skillValue: [0,0,0])
+        let train = TrainingSession(steps: 0, distance: 0.0, pace: 0.0, date: Date())
         context.insert(skillsV)
+        context.insert(train)
+        
     }
     
     
@@ -178,33 +179,3 @@ struct HomePage: View {
 
 
 
-struct BattleResultView: View {
-    let result: String
-    var onDismiss: () -> Void
-    @AppStorage("image", store: UserDefaults(suiteName: "character")) var image: String = "human1"
-    
-    var body: some View {
-        ZStack {
-            // Sfondo per la schermata del risultato della battaglia
-            Color("background").opacity(0.5).edgesIgnoringSafeArea(.all)
-            
-            // Visualizzazione del risultato
-            VStack {
-                Spacer()
-                Text(result)
-                    .multilineTextAlignment(.center)
-                    .font(Font.custom("Press Start", size: 35))
-                    .foregroundColor(Color("orangeSlide"))
-                    .padding()
-                    .cornerRadius(10)
-                Spacer()
-                if result == "DEFEATED"{}
-                Image(image)
-                Spacer()
-            }
-        }
-        .onTapGesture {
-            onDismiss()
-        }
-    }
-}

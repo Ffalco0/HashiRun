@@ -255,14 +255,12 @@ struct MissionView: View {
         timer?.invalidate()
         isRunning = false
         progressTime = 0
-        print(firstCompletation)
-        firstCompletation = true
         if !firstCompletation{firstCompletation = true}
         // Check if the user has completed the quest
         if pedometerManager.distanceInKilometers == distanceToComplete {
             checkProgressCharacter()
         }
-        saveTrainingData(index: training.count - 1)
+        saveTrainingData(index: training.isEmpty ? 0 : training.count - 1)
         backToHome = true
     }
 }
