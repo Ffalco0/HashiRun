@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    " %.2fkm" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " %.2fkm"
+          }
+        }
+      }
+    },
     ":" : {
       "localizations" : {
         "it" : {
@@ -99,6 +109,7 @@
       }
     },
     "Back" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -138,6 +149,16 @@
         }
       }
     },
+    "Choose your Hero" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli il tuo Eroe"
+          }
+        }
+      }
+    },
     "COLLECTIBLES" : {
       "localizations" : {
         "it" : {
@@ -148,7 +169,18 @@
         }
       }
     },
+    "Date:" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data:"
+          }
+        }
+      }
+    },
     "Date: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -178,7 +210,18 @@
         }
       }
     },
+    "Distance:" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distance:"
+          }
+        }
+      }
+    },
     "Distance: %.2f km" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -258,6 +301,16 @@
         }
       }
     },
+    "Human base lvl l" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Umano lvl 1"
+          }
+        }
+      }
+    },
     "Lvl %lld" : {
       "localizations" : {
         "it" : {
@@ -309,6 +362,7 @@
       }
     },
     "OK" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -328,7 +382,18 @@
         }
       }
     },
+    "Pace:" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Velocità:"
+          }
+        }
+      }
+    },
     "Pace: %.2f km/min" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -359,6 +424,7 @@
       }
     },
     "Player class lvl " : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -398,7 +464,18 @@
         }
       }
     },
+    "Steps:" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passi:"
+          }
+        }
+      }
+    },
     "Steps: %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -444,6 +521,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Parla con il marinaio"
+          }
+        }
+      }
+    },
+    "This choice will be permanent!!" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa scelta sarà permanente!"
           }
         }
       }
