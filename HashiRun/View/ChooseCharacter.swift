@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct ChooseCharacter: View {
-    
+    @State var characterSelected: Bool = false
+
     var body: some View {
         let characterImages = ["warrior11", "rogue11", "mage11"]
         let characterClasses = ["Warrior","Rogue","Mage"]
         @AppStorage("image", store: UserDefaults(suiteName: "character")) var image: String = "human"
-        @AppStorage("firstCompletation", store: UserDefaults(suiteName: "character")) var firstCompletation: Bool = false
+        @AppStorage("choosedCharacter", store: UserDefaults(suiteName: "character")) var choosedCharacter: Bool = false
         
         @State var rememberSelection: Int? = nil
         
@@ -31,33 +32,39 @@ struct ChooseCharacter: View {
                         Spacer()
                         TabView{
                             ForEach(0..<characterImages.count, id: \.self) { index in
+                                
                                 Button(action: {
                                     image = characterImages[index]
+                                    characterSelected.toggle()
+                                    choosedCharacter = false
                                     print(image)
+                                    print(characterSelected)
                                 }, label: {
-                                    NavigationLink(destination: HomePage()){
-                                        VStack{
-                                            ZStack{
-                                                Circle()
-                                                    .foregroundStyle(.gray)
-                                                    .frame(width: 300)
-                                                    .opacity(0.25)
-                                                
-                                                Image(characterImages[index])
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 200, height: 200)
-                                            }
-                                            .padding()
-                                            Text(characterClasses[index])
-                                                .foregroundStyle(.white)
-                                                .font(Font.custom("Press Start", size: 30))
-                                                .multilineTextAlignment(.center)
+                                    VStack{
+                                        ZStack{
+                                            Circle()
+                                                .foregroundStyle(.gray)
+                                                .frame(width: 300)
+                                                .opacity(0.25)
                                             
+                                            Image(characterImages[index])
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 200, height: 200)
                                         }
                                         .padding()
+                                        Text(characterClasses[index])
+                                            .foregroundStyle(.white)
+                                            .font(Font.custom("Press Start", size: 30))
+                                            .multilineTextAlignment(.center)
+                                        
                                     }
-                                })
+                                    .padding()
+                                    .navigationDestination(isPresented: $characterSelected){HomePage()}
+
+                                }
+                                )
+                                
                             }
                             
                             
