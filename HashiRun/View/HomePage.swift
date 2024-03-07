@@ -92,6 +92,8 @@ struct HomePage: View {
                             }
                             
                         }
+                        .disabled(!firstCompletation)
+                        .opacity(firstCompletation ? 1.0 : 0.5)
                         .shadow(color: .black, radius: 10, x: 0, y: 5) // Add shadow here
                         .padding()
                         
